@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  public isAuth: boolean;
+  public currState: string;
+  
+  constructor(private router: Router, private auth: AuthService) {
+    this.isAuth = this.auth.token ? true : false;
+    this.router.events.subscribe(value => {
+      this.isAuth = this.auth.token ? true : false;
+      if(value.url == '/login') {
+        if(this.isAuth) {
+          this.router.navigate(['/']);
+          return;
+        }
+      }
+      if(!this.isAuth) this.router.navigate(['/login']);
+    });
+  }
+
 }

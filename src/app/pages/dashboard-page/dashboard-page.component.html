@@ -1,0 +1,57 @@
+<div class="container">
+	<md-card class="left-nav">
+		<div class="left-header">
+			<md-icon>person</md-icon>
+			<div class="left-header-info">
+				<p>{{user.firstName + ' ' + user.lastName}}</p>
+				<p style="color: rgba(255, 255, 255, 0.57); margin-top: 5px;">{{getStyledRoles(user.roles)}}</p>
+			</div>
+			<button style="margin-left: 1rem;" md-icon-button><md-icon>arrow_drop_down</md-icon></button>
+		</div>
+		<div class="left-content">
+			<md-list>
+				<md-list-item>
+					<span class="color-87">Email:&nbsp;</span>
+					<span class="color-display">{{user.email}}</span>
+				</md-list-item>
+				<md-list-item *ngIf="user.boleta">
+					<span class="color-87">Boleta:&nbsp;</span>
+					<span class="color-display">{{user.boleta}}</span>
+				</md-list-item>
+			</md-list>
+		</div>
+	</md-card>
+	<div class="main-content">
+		<div class="card-container">
+			<div class="card-pretitle">
+				<md-icon>domain</md-icon>&nbsp;Panel de administración
+			</div>
+			<md-card class="admin-card">
+				<div class="row">
+					<div class="col-xs-12 card-pretitle color-87">
+						<md-icon>person</md-icon>&nbsp;Usuarios
+					</div>
+				</div>
+			</md-card>
+		</div>
+
+		<div class="card-container">
+			<div class="card-pretitle">
+				<md-icon>library_books</md-icon>&nbsp;Panel de alumno
+			</div>
+			<md-card class="admin-card">
+				hola
+			</md-card>
+		</div>
+
+		<div class="card-container">
+			<div class="card-pretitle">
+				<md-icon>class</md-icon>&nbsp;Panel de profesor
+			</div>
+			<md-card class="admin-card">
+				hola
+			</md-card>
+		</div>
+
+	</div>
+</div>

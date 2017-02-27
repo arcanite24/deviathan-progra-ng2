@@ -1,0 +1,40 @@
+.container {
+    background-color: #eee;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+md-card {
+    padding: 0;
+}
+
+.login-card {
+    background-color: white;
+    min-height: 400px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+}
+
+.login-inputs {
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.login-inputs > md-input-container {
+    width: 100%;
+}
+
+md-icon {
+    color: rgba(0, 0, 0, 0.57);
+}
+
+button, md-progress-circle {
+    display: block;
+    margin: auto;
+}

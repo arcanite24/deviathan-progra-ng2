@@ -1,3 +1,5 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar color="primary" *ngIf="isAuth">
+  <md-icon>school</md-icon>
+  <span>&nbsp;Programación Bátiz</span>
+</md-toolbar>
+<router-outlet></router-outlet>

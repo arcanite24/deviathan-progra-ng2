@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+}
+
+.spacer {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+body {
+    background-color: #eee;
+}
+
+.color-display {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.color-87 {
+    color: rgba(0, 0, 0, 0.87);
+}
