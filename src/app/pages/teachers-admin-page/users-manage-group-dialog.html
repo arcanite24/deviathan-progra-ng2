@@ -1,0 +1,10 @@
+<h1 md-dialog-title>Asignar grupo</h1>
+<md-dialog-content>
+    <md-select [(ngModel)]="groupData.grupo" placeholder="Grupo">
+        <md-option *ngFor="let grupo of allGrupos" [value]="grupo.id">{{grupo.nombre}}</md-option>
+    </md-select>
+</md-dialog-content>
+<md-dialog-actions>
+    <button (click)="changeGroup(groupData.grupo)" color="primary" md-button>Cambiar</button>
+    <button md-dialog-close md-button>Cancelar</button>
+</md-dialog-actions>

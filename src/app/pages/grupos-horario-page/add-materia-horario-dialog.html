@@ -1,0 +1,41 @@
+<h1 md-dialog-title>Agregar clase</h1>
+<md-dialog-content class="w100">
+    <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+    <div class="row p1rem">
+        <div class="col-xs-12 col-sm-6 col-md-6" style="margin: 0.5rem 0 1rem">
+            <md-select class="w100" placeholder="Materia" [(ngModel)]="addClaseData.materia">
+                <md-option *ngFor="let mat of allMaterias" [value]="mat.id">{{mat.name}}</md-option>
+            </md-select>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6" style="margin: 0.5rem 0 1rem">
+            <md-select class="w100" placeholder="Día de la clase" [(ngModel)]="addClaseData.dia">
+                <md-option value="1">Lunes</md-option>
+                <md-option value="2">Martes</md-option>
+                <md-option value="3">Miércoles</md-option>
+                <md-option value="4">Jueves</md-option>
+                <md-option value="5">Viernes</md-option>
+                <md-option value="6">Sábado</md-option>
+            </md-select>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6" style="margin: 0.5rem 0 1rem">
+            <md-select class="w100" placeholder="Inicio de la clase" [(ngModel)]="addClaseData.inicio">
+                <md-option *ngFor="let hora of horas" [value]="hora">{{hora}}</md-option>
+            </md-select>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6" style="margin: 0.5rem 0 1rem">
+            <md-select class="w100" placeholder="Inicio de la clase" [(ngModel)]="addClaseData.fin">
+                <md-option *ngFor="let hora of horas" [value]="hora">{{hora}}</md-option>
+            </md-select>
+        </div>
+        <div class="col-xs-12" style="margin-bottom: 1rem;">
+            <h4 class="color-display">Profesores que imparten la materia:</h4>
+        </div>
+        <div class="col-xs-12" *ngFor="let teacher of allTeachers">
+            <md-checkbox [(ngModel)]="teacher.imparte">{{teacher.firstName + ' ' + teacher.lastName}}</md-checkbox>
+        </div>
+    </div>
+</md-dialog-content>
+<md-dialog-actions>
+    <button (click)="addClase(addClaseData, allTeachers)" color="accent" md-button [disabled]="loader">Agregar</button>
+    <button md-dialog-close md-button>Cancelar</button>
+</md-dialog-actions>

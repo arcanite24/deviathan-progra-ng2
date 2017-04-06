@@ -54,3 +54,22 @@
     margin-top: 0.5rem;
     margin-bottom: 1rem;
 }
+
+.dash-card {
+    border-right: 1px solid #eee;
+}
+
+.border-down {
+    border-bottom: 1px solid #eee;
+}
+
+.border-top-dashcard {
+    border-top: 1px solid #eee;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.dashboard-card {
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}

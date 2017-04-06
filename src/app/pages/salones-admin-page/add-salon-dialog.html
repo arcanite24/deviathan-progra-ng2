@@ -1,0 +1,15 @@
+<h1 md-dialog-title>Agregar Salon</h1>
+<md-dialog-content class="w100">
+    <div class="row p1rem">
+        <div class="col-xs-12">
+            <md-input-container class="w100">
+                <input mdInput placeholder="Nombre" [(ngModel)]="addSalonData.name">
+                <md-icon mdSuffix>home</md-icon>
+            </md-input-container>
+        </div>
+    </div>
+</md-dialog-content>
+<md-dialog-actions>
+    <button (click)="addSalon(addSalonData.name)" color="accent" md-button>Agregar</button>
+    <button md-dialog-close md-button>Cancelar</button>
+</md-dialog-actions>

@@ -18,6 +18,13 @@ export class AuthService {
     return this.http.post(this.api + 'user/login', {username: username, password: password}).map(res => res.json());
   }
 
+  logout() {
+    this.user = null;
+    this.token = null;
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+  }
+
   saveAuth(user: any, token: string) {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);

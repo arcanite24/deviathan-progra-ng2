@@ -1,0 +1,88 @@
+<div class="f-container p1rem">
+  <div class="w100 f-container-center">
+    <h4 class="color-display display-icon-text" style="display: inline-flex;">
+      <md-icon>event</md-icon>
+      Horario del Grupo
+    </h4>
+    <button md-button routerLink="../../" color="accent"><md-icon>arrow_back</md-icon> Regresar</button>
+    <button md-raised-button color="primary" style="margin-left: auto;" (click)="openAddClase()"><md-icon>add</md-icon>Agregar clase</button>
+  </div>
+  <md-card class="w100" style="padding: 0.5rem 1rem 0; margin-top: 0.5rem;">
+    <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+    <div class="w100 row">
+
+      <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 col-xl-2 border-bottom-padding">
+        <div class="row">
+          <div class="col-xs-12 border-bottom-padding">
+            <p class="color-87" style="font-size: 1.2rem; font-weight: bold">Lunes</p>
+          </div>
+          <div class="col-xs-12 color-87 hover-eee border-bottom-padding" *ngFor="let clase of horario[1]" (click)="openDetailClase(clase.id)">
+            <span class="color-87" style="font-size: 1rem;">{{clase.materia ? clase.materia.name : 'Materia no asignada'}}</span><br>
+            <span class="color-display" style="font-size: 0.8rem">{{clase.inicio}} - {{clase.fin}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 col-xl-2 border-bottom-padding">
+        <div class="row">
+          <div class="col-xs-12 border-bottom-padding">
+            <p class="color-87" style="font-size: 1.2rem; font-weight: bold">Martes</p>
+          </div>
+          <div class="col-xs-12 color-87 hover-eee border-bottom-padding" *ngFor="let clase of horario[2]" (click)="openDetailClase(clase.id)">
+            <span class="color-87" style="font-size: 1rem;">{{clase.materia ? clase.materia.name : 'Materia no asignada'}}</span><br>
+            <span class="color-display" style="font-size: 0.8rem">{{clase.inicio}} - {{clase.fin}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 col-xl-2 border-bottom-padding">
+        <div class="row">
+          <div class="col-xs-12 border-bottom-padding">
+            <p class="color-87" style="font-size: 1.2rem; font-weight: bold">Miércoles</p>
+          </div>
+          <div class="col-xs-12 color-87 hover-eee border-bottom-padding" *ngFor="let clase of horario[3]" (click)="openDetailClase(clase.id)">
+            <span class="color-87" style="font-size: 1rem;">{{clase.materia ? clase.materia.name : 'Materia no asignada'}}</span><br>
+            <span class="color-display" style="font-size: 0.8rem">{{clase.inicio}} - {{clase.fin}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 col-xl-2 border-bottom-padding">
+        <div class="row">
+          <div class="col-xs-12 border-bottom-padding">
+            <p class="color-87" style="font-size: 1.2rem; font-weight: bold">Jueves</p>
+          </div>
+          <div class="col-xs-12 color-87 hover-eee border-bottom-padding" *ngFor="let clase of horario[4]" (click)="openDetailClase(clase.id)">
+            <span class="color-87" style="font-size: 1rem;">{{clase.materia ? clase.materia.name : 'Materia no asignada'}}</span><br>
+            <span class="color-display" style="font-size: 0.8rem">{{clase.inicio}} - {{clase.fin}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 col-xl-2 border-bottom-padding">
+        <div class="row">
+          <div class="col-xs-12 border-bottom-padding">
+            <p class="color-87" style="font-size: 1.2rem; font-weight: bold">Viernes</p>
+          </div>
+          <div class="col-xs-12 color-87 hover-eee border-bottom-padding" *ngFor="let clase of horario[5]" (click)="openDetailClase(clase.id)">
+            <span class="color-87" style="font-size: 1rem;">{{clase.materia ? clase.materia.name : 'Materia no asignada'}}</span><br>
+            <span class="color-display" style="font-size: 0.8rem">{{clase.inicio}} - {{clase.fin}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 col-xl-2 border-bottom-padding">
+        <div class="row">
+          <div class="col-xs-12 border-bottom-padding">
+            <p class="color-87" style="font-size: 1.2rem; font-weight: bold">Sábado</p>
+          </div>
+          <div class="col-xs-12 color-87 hover-eee border-bottom-padding" *ngFor="let clase of horario[6]" (click)="openDetailClase(clase.id)">
+            <span class="color-87" style="font-size: 1rem;">{{clase.materia ? clase.materia.name : 'Materia no asignada'}}</span><br>
+            <span class="color-display" style="font-size: 0.8rem">{{clase.inicio}} - {{clase.fin}}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </md-card>
+</div>

@@ -1,0 +1,41 @@
+<div class="f-container p1rem">
+  <div class="w100 f-container-center">
+    <h4 class="color-display display-icon-text" style="display: inline-flex;">
+      <md-icon class="m1rem-right">border_color</md-icon>
+      Editar Profesor
+    </h4>
+    <button md-button routerLink="../../" color="accent"><md-icon>arrow_back</md-icon> Regresar</button>
+  </div>
+  <md-card class="w50" style="padding: 0.5rem; margin-top: 0.5rem;">
+    <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+    <div class="row p1rem">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <md-input-container class="w100">
+          <input mdInput placeholder="Nombre(s)" [(ngModel)]="user.firstName">
+          <md-icon mdSuffix>person</md-icon>
+        </md-input-container>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <md-input-container class="w100">
+          <input mdInput placeholder="Apellidos"  [(ngModel)]="user.lastName">
+          <md-icon mdSuffix>person_outline</md-icon>
+        </md-input-container>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <md-input-container class="w100">
+          <input mdInput placeholder="Correo Electrónico" [(ngModel)]="user.email">
+          <md-icon mdSuffix>mail</md-icon>
+        </md-input-container>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        <md-input-container class="w100">
+          <input mdInput placeholder="Nombre de usuario" [(ngModel)]="user.username">
+          <md-icon mdSuffix>person</md-icon>
+        </md-input-container>
+      </div>
+      <div class="col-xs-12">
+        <button class="w100" md-raised-button color="primary" (click)="editUser(user)" [disabled]="loader">Editar Profesor</button>
+      </div>
+    </div>
+  </md-card>
+</div>

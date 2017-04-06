@@ -1,0 +1,52 @@
+//Flexbox
+.f-all-center {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w60 {
+    width: 60%;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .w50 {
+        width: 100%;
+    }
+
+    .w60 {
+        width: 100%;
+    }
+
+}
+
+[class*="col-"] {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+md-icon[mdSuffix] {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.border-bottom-padding {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hover-eee:hover {
+    background-color: #eee;
+    cursor: pointer;
+}

@@ -19,8 +19,10 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
+        "assets/master.scss",
         "styles.css",
-        "assets/green-grey.scss"
+        "assets/green-grey.scss",
+        "assets/md-table.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

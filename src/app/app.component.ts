@@ -14,6 +14,7 @@ export class AppComponent {
   
   constructor(private router: Router, private auth: AuthService) {
     this.isAuth = this.auth.token ? true : false;
+    if(!this.isAuth) {this.router.navigate(['/login']); return;};
     this.router.events.subscribe(value => {
       this.isAuth = this.auth.token ? true : false;
       if(value.url == '/login') {

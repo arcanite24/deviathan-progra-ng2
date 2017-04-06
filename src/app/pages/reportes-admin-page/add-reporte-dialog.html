@@ -1,0 +1,18 @@
+<h1 md-dialog-title>Agregar Reporte</h1>
+<md-dialog-content class="w100">
+    <div class="row p1rem" style="overflow-x: hidden">
+        <md-input-container class="col-xs-12">
+            <textarea mdInput placeholder="Descripción" [(ngModel)]="addReporteData.desc"></textarea>
+        </md-input-container>
+        <md-select class="col-xs-12" placeholder="Objeto" [(ngModel)]="addReporteData.item" style="margin-top: 1rem">
+          <md-option *ngFor="let item of allItems" [value]="item.id">{{item.name + ' - ' + item.salon.name}}</md-option>
+        </md-select>
+        <div class="col-xs-12" style="margin-top: 1rem">
+            <md-checkbox [(ngModel)]="addReporteData.solved">Solucionado</md-checkbox>
+        </div>
+    </div>
+</md-dialog-content>
+<md-dialog-actions>
+    <button (click)="addReporte(addReporteData)" color="accent" md-button>Agregar</button>
+    <button md-dialog-close md-button>Cancelar</button>
+</md-dialog-actions>

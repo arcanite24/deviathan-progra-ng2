@@ -5,16 +5,50 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
+import { DatepickerModule } from 'angular2-material-datepicker';
 
 import { AuthService } from './services/auth.service';
+import { BackServiceService } from './services/back-service.service';
 
 import { AppComponent } from './app.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { UsersAdminPageComponent, ConfirmDeleteUserDialog, FilterPipe, UsersManageGroupDialog } from './pages/users-admin-page/users-admin-page.component';
+import { UsersAddPageComponent } from './pages/users-add-page/users-add-page.component';
+import { UsersEditPageComponent } from './pages/users-edit-page/users-edit-page.component';
+import { MateriasAdminPageComponent, ConfirmDeleteMateriaDialog } from './pages/materias-admin-page/materias-admin-page.component';
+import { MateriasAddPageComponent } from './pages/materias-add-page/materias-add-page.component';
+import { MateriasEditPageComponent } from './pages/materias-edit-page/materias-edit-page.component';
+import { GruposAdminPageComponent, ConfirmDeleteGrupoDialog } from './pages/grupos-admin-page/grupos-admin-page.component';
+import { GruposAddPageComponent } from './pages/grupos-add-page/grupos-add-page.component';
+import { GruposEditPageComponent } from './pages/grupos-edit-page/grupos-edit-page.component';
+import { GruposHorarioPageComponent, AddMateriaHorarioDialog, DetailClaseDialog } from './pages/grupos-horario-page/grupos-horario-page.component';
+import { TeachersAdminPageComponent, ConfirmDeleteTeacherDialog } from './pages/teachers-admin-page/teachers-admin-page.component';
+import { TeachersEditPageComponent } from './pages/teachers-edit-page/teachers-edit-page.component';
+import { TeachersAddPageComponent } from './pages/teachers-add-page/teachers-add-page.component';
+import { SalonesAdminPageComponent, AddSalonDialog, EditSalonDialog, ConfirmDeleteSalonDialog } from './pages/salones-admin-page/salones-admin-page.component';
+import { InventarioAdminPageComponent, AddInventarioDialog, EditInventarioDialog, ConfirmDeleteInventarioDialog } from './pages/inventario-admin-page/inventario-admin-page.component';
+import { ReportesAdminPageComponent, AddReporteDialog, EditReporteDialog, ConfirmDeleteReporteDialog } from './pages/reportes-admin-page/reportes-admin-page.component';
 
 const appRoutes: Routes = [
   {path: '', component: DashboardPageComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'usuarios', component: UsersAdminPageComponent},
+  {path: 'usuarios/nuevo', component:  UsersAddPageComponent},
+  {path: 'usuarios/editar/:id', component:  UsersEditPageComponent},
+  {path: 'materias', component: MateriasAdminPageComponent},
+  {path: 'materias/nuevo', component: MateriasAddPageComponent},
+  {path: 'materias/editar/:id', component: MateriasEditPageComponent},
+  {path: 'grupos', component: GruposAdminPageComponent},
+  {path: 'grupos/nuevo', component: GruposAddPageComponent},
+  {path: 'grupos/editar/:id', component: GruposEditPageComponent},
+  {path: 'grupos/horario/:id', component: GruposHorarioPageComponent},
+  {path: 'maestros', component: TeachersAdminPageComponent},
+  {path: 'maestros/nuevo', component:  TeachersAddPageComponent},
+  {path: 'maestros/editar/:id', component:  TeachersEditPageComponent},
+  {path: 'salones', component: SalonesAdminPageComponent},
+  {path: 'inventario', component: InventarioAdminPageComponent},
+  {path: 'reportes', component: ReportesAdminPageComponent},
   {path: '**', redirectTo: '/'}
 ];
 
@@ -22,16 +56,69 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DashboardPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    UsersAdminPageComponent,
+    UsersManageGroupDialog,
+    UsersAddPageComponent,
+    ConfirmDeleteUserDialog,
+    UsersEditPageComponent,
+    FilterPipe,
+    MateriasAdminPageComponent,
+    MateriasAddPageComponent,
+    MateriasEditPageComponent,
+    ConfirmDeleteMateriaDialog,
+    GruposAdminPageComponent,
+    GruposAddPageComponent,
+    GruposEditPageComponent,
+    ConfirmDeleteGrupoDialog,
+    GruposHorarioPageComponent,
+    AddMateriaHorarioDialog,
+    TeachersAdminPageComponent,
+    TeachersEditPageComponent,
+    TeachersAddPageComponent,
+    ConfirmDeleteTeacherDialog,
+    DetailClaseDialog,
+    SalonesAdminPageComponent,
+    InventarioAdminPageComponent,
+    ReportesAdminPageComponent,
+    EditSalonDialog,
+    AddSalonDialog,
+    ConfirmDeleteSalonDialog,
+    InventarioAdminPageComponent,
+    AddInventarioDialog,
+    EditInventarioDialog,
+    ConfirmDeleteInventarioDialog,
+    AddReporteDialog,
+    EditReporteDialog,
+    ConfirmDeleteReporteDialog
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DatepickerModule
   ],
-  providers: [AuthService],
+  entryComponents: [
+    ConfirmDeleteUserDialog,
+    ConfirmDeleteMateriaDialog,
+    ConfirmDeleteGrupoDialog,
+    AddMateriaHorarioDialog,
+    UsersManageGroupDialog,
+    ConfirmDeleteTeacherDialog,
+    DetailClaseDialog,
+    AddSalonDialog,
+    EditSalonDialog,
+    ConfirmDeleteSalonDialog,
+    AddInventarioDialog,
+    EditInventarioDialog,
+    ConfirmDeleteInventarioDialog,
+    AddReporteDialog,
+    EditReporteDialog,
+    ConfirmDeleteReporteDialog
+  ],
+  providers: [AuthService, BackServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,45 @@
+<div class="f-container p1rem">
+  <div class="w100 f-container-center">
+    <h4 class="color-display display-icon-text" style="display: inline-flex;">
+      <md-icon>person</md-icon>
+      Usuarios
+    </h4>
+    <button md-button routerLink="../" color="accent"style="color: rgba(0, 0, 0, 0.54)" [disabled]="loader"><md-icon>arrow_back</md-icon> Regresar</button>
+    <button md-raised-button color="primary" style="margin-left: auto;" routerLink="nuevo"><md-icon>add</md-icon>Agregar Usuario</button>
+  </div>
+  <md-card class="w100" style="padding: 0.5rem 1rem 0; margin-top: 0.5rem;">
+    <md-input-container class="w100">
+      <input mdInput placeholder="Buscar entre los usuarios" [(ngModel)]="searchQuery">
+      <md-icon mdSuffix>search</md-icon>
+    </md-input-container>
+    <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+    <table class="md-table w100">
+      <thead>
+        <tr>
+          <th>Boleta</th>
+          <th>Nombre(s)</th>
+          <th>Apellidos</th>
+          <th>Grupo</th>
+          <th>Email</th>
+          <th>Fecha de registro</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of allUsers; let i = index" [attr.data-index]="i">
+          <td>{{user.boleta}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.grupo ? user.grupo.nombre : 'No asignado'}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.createdAt | date}}</td>
+          <td>
+            <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Editar usuario" md-button (click)="goEditarUser(user.id)"><md-icon>border_color</md-icon></button>
+            <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Borrar usuario" md-button (click)="openDeleteUser(user.id, i)"><md-icon>delete</md-icon></button>
+            <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Gestionar grupo" md-button (click)="openManageGroup(user.id)"><md-icon>group</md-icon></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-card>
+</div>

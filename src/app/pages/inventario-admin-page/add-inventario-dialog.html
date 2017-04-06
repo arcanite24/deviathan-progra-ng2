@@ -1,0 +1,20 @@
+<h1 md-dialog-title>Agregar Inventario</h1>
+<md-dialog-content class="w100">
+    <div class="row p1rem" style="overflow-x: hidden">
+        <md-input-container class="col-xs-12">
+            <input mdInput placeholder="Nombre" [(ngModel)]="addInventarioData.name">
+            <md-icon mdSuffix>find_in_page</md-icon>
+        </md-input-container>
+        <md-input-container class="col-xs-12">
+            <input mdInput placeholder="Descripción" [(ngModel)]="addInventarioData.desc">
+            <md-icon mdSuffix>help</md-icon>
+        </md-input-container>
+        <md-select class="col-xs-12" placeholder="Salón" [(ngModel)]="addInventarioData.salon" style="margin-top: 1rem">
+          <md-option *ngFor="let salon of allSalones" [value]="salon.id">{{salon.name}}</md-option>
+        </md-select>
+    </div>
+</md-dialog-content>
+<md-dialog-actions>
+    <button (click)="addInventario(addInventarioData)" color="accent" md-button>Agregar</button>
+    <button md-dialog-close md-button>Cancelar</button>
+</md-dialog-actions>

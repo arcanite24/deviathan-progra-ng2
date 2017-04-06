@@ -6,7 +6,11 @@
 				<p>{{user.firstName + ' ' + user.lastName}}</p>
 				<p style="color: rgba(255, 255, 255, 0.57); margin-top: 5px;">{{getStyledRoles(user.roles)}}</p>
 			</div>
-			<button style="margin-left: 1rem;" md-icon-button><md-icon>arrow_drop_down</md-icon></button>
+			<button style="margin-left: 1rem;" md-icon-button [mdMenuTriggerFor]="menu"><md-icon>arrow_drop_down</md-icon></button>
+			<md-menu #menu="mdMenu">
+				<button md-menu-item><md-icon>person</md-icon> Ver perfil</button>
+				<button md-menu-item (click)="logout()"><md-icon>exit_to_app</md-icon> Cerrar sesión</button>
+			</md-menu>
 		</div>
 		<div class="left-content">
 			<md-list>
@@ -18,6 +22,10 @@
 					<span class="color-87">Boleta:&nbsp;</span>
 					<span class="color-display">{{user.boleta}}</span>
 				</md-list-item>
+				<md-list-item>
+					<span class="color-87">Grupo:&nbsp;</span>
+					<span class="color-display">{{user.grupo ? user.grupo.nombre : 'Sin asignar'}}</span>
+				</md-list-item>
 			</md-list>
 		</div>
 	</md-card>
@@ -26,22 +34,207 @@
 			<div class="card-pretitle">
 				<md-icon>domain</md-icon>&nbsp;Panel de administración
 			</div>
-			<md-card class="admin-card">
-				<div class="row">
-					<div class="col-xs-12 card-pretitle color-87">
-						<md-icon>person</md-icon>&nbsp;Usuarios
-					</div>
+			<div class="admin-card">
+				<div class="row center-xs" style="box-sizing: border-box">
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>person</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Alumnos</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.users || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/usuarios">Administrar alumnos</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>assignment</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Materias</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.materias || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/materias">Administrar materias</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>group</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Grupos</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.grupos || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/grupos">Administrar grupos</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>person_outline</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Profesores</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.teachers || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/maestros">Administrar profesores</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>home</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Salones</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.salones || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/salones">Administrar salones</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>find_in_page</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Inventario</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.inventarios || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/inventario">Administrar inventario</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>report</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Reportes</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.reportes || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/reportes">Administrar reportes</button>
+							</div>
+						</div>
+					</md-card>
 				</div>
-			</md-card>
+			</div>
 		</div>
 
 		<div class="card-container">
 			<div class="card-pretitle">
-				<md-icon>library_books</md-icon>&nbsp;Panel de alumno
+				<md-icon>class</md-icon>&nbsp;Panel de profesor
 			</div>
-			<md-card class="admin-card">
-				hola
-			</md-card>
+			<div class="admin-card">
+				<div class="row center-xs" style="box-sizing: border-box">
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>assignment_ind</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Lista de asistencia</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Clases hoy: </strong>
+								<span class="color-display">{{adminInfo.users || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/usuarios">Tomar asistencia</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>assignment</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Materias</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.materias || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/materias">Administrar materias</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>group</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Grupos</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.grupos || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/grupos">Administrar grupos</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>person_outline</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Profesores</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.teachers || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/maestros">Administrar profesores</button>
+							</div>
+						</div>
+					</md-card>
+				</div>
+			</div>
 		</div>
 
 		<div class="card-container">

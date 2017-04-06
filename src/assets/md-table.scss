@@ -1,0 +1,36 @@
+@function sp($sp) {
+  @return ($sp / 14) * 1rem;
+}
+
+.f-container-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+table.md-table {
+
+    thead th {
+        color: rgba(0, 0, 0, 0.54);
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        padding: 0.6rem;
+        font-size: sp(12);
+    }
+
+    tbody tr {
+        &:hover {
+            background-color: #eee;
+        }
+        &:not(:last-child) {
+            border-bottom: 1px solid #eee;
+        }
+    }
+
+    tbody td {
+        color: rgba(0, 0, 0, 0.87);
+        font-size: sp(13);
+        padding: 0.6rem;
+    }
+
+}
