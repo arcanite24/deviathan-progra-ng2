@@ -22,15 +22,19 @@ import { MateriasEditPageComponent } from './pages/materias-edit-page/materias-e
 import { GruposAdminPageComponent, ConfirmDeleteGrupoDialog } from './pages/grupos-admin-page/grupos-admin-page.component';
 import { GruposAddPageComponent } from './pages/grupos-add-page/grupos-add-page.component';
 import { GruposEditPageComponent } from './pages/grupos-edit-page/grupos-edit-page.component';
-import { GruposHorarioPageComponent, AddMateriaHorarioDialog, DetailClaseDialog } from './pages/grupos-horario-page/grupos-horario-page.component';
+import { GruposHorarioPageComponent, AddMateriaHorarioDialog, DetailClaseDialog, GenerateHorarioDialog } from './pages/grupos-horario-page/grupos-horario-page.component';
 import { TeachersAdminPageComponent, ConfirmDeleteTeacherDialog } from './pages/teachers-admin-page/teachers-admin-page.component';
 import { TeachersEditPageComponent } from './pages/teachers-edit-page/teachers-edit-page.component';
 import { TeachersAddPageComponent } from './pages/teachers-add-page/teachers-add-page.component';
 import { SalonesAdminPageComponent, AddSalonDialog, EditSalonDialog, ConfirmDeleteSalonDialog } from './pages/salones-admin-page/salones-admin-page.component';
 import { InventarioAdminPageComponent, AddInventarioDialog, EditInventarioDialog, ConfirmDeleteInventarioDialog } from './pages/inventario-admin-page/inventario-admin-page.component';
 import { ReportesAdminPageComponent, AddReporteDialog, EditReporteDialog, ConfirmDeleteReporteDialog } from './pages/reportes-admin-page/reportes-admin-page.component';
+import { AlumnoReportesComponent } from './pages/alumno/alumno-reportes/alumno-reportes.component';
+import { AlumnoHorarioComponent } from './pages/alumno/alumno-horario/alumno-horario.component';
+import { DialogProfileComponent } from './pages/dialogs/dialog-profile/dialog-profile.component';
 
 const appRoutes: Routes = [
+  // Admin
   {path: '', component: DashboardPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'usuarios', component: UsersAdminPageComponent},
@@ -49,7 +53,13 @@ const appRoutes: Routes = [
   {path: 'salones', component: SalonesAdminPageComponent},
   {path: 'inventario', component: InventarioAdminPageComponent},
   {path: 'reportes', component: ReportesAdminPageComponent},
-  {path: '**', redirectTo: '/'}
+  
+  //Alumno
+  {path: 'alumno/reportes', component: AlumnoReportesComponent},
+  {path: 'alumno/horario', component: AlumnoHorarioComponent},
+
+  {path: '**', redirectTo: '/'},
+
 ];
 
 @NgModule({
@@ -90,7 +100,11 @@ const appRoutes: Routes = [
     ConfirmDeleteInventarioDialog,
     AddReporteDialog,
     EditReporteDialog,
-    ConfirmDeleteReporteDialog
+    ConfirmDeleteReporteDialog,
+    GenerateHorarioDialog,
+    AlumnoReportesComponent,
+    AlumnoHorarioComponent,
+    DialogProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +130,9 @@ const appRoutes: Routes = [
     ConfirmDeleteInventarioDialog,
     AddReporteDialog,
     EditReporteDialog,
-    ConfirmDeleteReporteDialog
+    ConfirmDeleteReporteDialog,
+    GenerateHorarioDialog,
+    DialogProfileComponent
   ],
   providers: [AuthService, BackServiceService],
   bootstrap: [AppComponent]

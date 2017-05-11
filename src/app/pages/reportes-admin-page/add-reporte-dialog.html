@@ -7,7 +7,7 @@
         <md-select class="col-xs-12" placeholder="Objeto" [(ngModel)]="addReporteData.item" style="margin-top: 1rem">
           <md-option *ngFor="let item of allItems" [value]="item.id">{{item.name + ' - ' + item.salon.name}}</md-option>
         </md-select>
-        <div class="col-xs-12" style="margin-top: 1rem">
+        <div class="col-xs-12" style="margin-top: 1rem" *ngIf="!isAlumno">
             <md-checkbox [(ngModel)]="addReporteData.solved">Solucionado</md-checkbox>
         </div>
     </div>

@@ -118,7 +118,7 @@ export class EditInventarioDialog implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.dialogRef.config.data.id;
+    let id = this.dialogRef.componentInstance.id;
     this.back.getDetailInventario(id).subscribe(
       data => {this.addInventarioData = data; this.addInventarioData.salon = data.salon ? data.salon.id : null},
       err => this.dialogRef.close({err: err})

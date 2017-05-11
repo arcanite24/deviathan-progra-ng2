@@ -16,6 +16,10 @@ export class BackServiceService {
     return this.http.get(this.api + 'dashboard/getAdminInfo').map(res => res.json());
   }
 
+  getUserInfo() {
+    return this.http.get(this.api + 'dashboard/getUserInfo').map(res => res.json());
+  }
+
   // Usuarios
   getAllUsers() {
     return this.http.get(this.api + 'user').map(res => res.json());
@@ -183,6 +187,7 @@ export class BackServiceService {
   }
 
   addReporte(data: any) {
+    data.user = this.auth.user.id;
     return this.http.post(this.api + 'reporte', data).map(res => res.json());
   }
 
@@ -196,6 +201,13 @@ export class BackServiceService {
 
   getDetailReporte(id: string) {
     return this.http.get(this.api + 'reporte/' + id).map(res => res.json());
+  }
+
+  /* USER MODULES */
+
+  // user -> reportes
+  getUserReports(id: string) {
+    return this.http.get(this.api + 'reporte/getUserReports/' + id).map(res => res.json());
   }
 
 }

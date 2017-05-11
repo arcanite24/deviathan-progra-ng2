@@ -70,6 +70,11 @@ export class GruposHorarioPageComponent implements OnInit {
     );
   }
 
+  openGenerarHorario() {
+    let id = this.route.snapshot.params['id'];
+    let dialog = this.dialog.open(GenerateHorarioDialog, {data: {id: id}});
+  }
+
   openDetailClase(id: string) {
     let dialog = this.dialog.open(DetailClaseDialog, {
       data: {
@@ -150,7 +155,7 @@ export class AddMateriaHorarioDialog implements OnInit {
   }
 
   addClase(data: any, teachers: Array<any>) {
-    let id = this.dialogRef.config.data.id;
+    let id = this.dialogRef.componentInstance.id;
     let teachersId = teachers.filter(teacher => teacher.imparte).map(teacher => teacher.id);
     this.back.addClase(id, data.dia, data.inicio, data.fin, data.materia, teachersId).subscribe(
       res => {
@@ -208,7 +213,7 @@ export class DetailClaseDialog implements OnInit {
 
   ngOnInit() {
     this.loader = true;
-    let id = this.dialogRef.config.data.id;
+    let id = this.dialogRef.componentInstance.id;
     this.back.getDetailClase(id).subscribe(
       dataClase => {
         this.addClaseData = dataClase;
@@ -245,7 +250,7 @@ export class DetailClaseDialog implements OnInit {
 
   deleteClase() {
     this.loader = true;
-    this.back.deleteClase(this.dialogRef.config.data.id).subscribe(
+    this.back.deleteClase(this.dialogRef.componentInstance.id).subscribe(
       data => {
         this.loader = false;
         this.dialogRef.close({mode: 'delete'});
@@ -258,7 +263,7 @@ export class DetailClaseDialog implements OnInit {
   }
 
   editClase(data: any, teachers: Array<any>) {
-    data.id = this.dialogRef.config.data.id;
+    data.id = this.dialogRef.componentInstance.id;
     data.profesores = teachers.filter(teacher => teacher.imparte).map(teacher => teacher.id);
     this.back.editClase(data).subscribe(
       res => {
@@ -270,6 +275,24 @@ export class DetailClaseDialog implements OnInit {
         this.snack.open('Error, no se pudo editar la clase', '', {duration: 2000});
       }
     );
+  }
+
+}
+
+@Component({
+  selector: 'generate-horario-dialog',
+  templateUrl: './generate-horario-dialog.html'
+})
+export class GenerateHorarioDialog implements OnInit {
+
+  constructor(
+
+  ) {
+    
+  }
+
+  ngOnInit() {
+
   }
 
 }

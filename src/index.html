@@ -13,6 +13,19 @@
 </head>
 <body>
   <app-root>
+    <style>
+      @keyframes cargador-shido {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .loading-image {
+        animation: cargador-shido 2s ease-in-out 0s infinite alternate;
+      }
+    </style>
     <div class="root-loader">
       <h1>Programación Bátiz</h1>
       <img src="assets/svg/settings.svg" alt="Cargando..." style="width: 50px" class="loading-image">

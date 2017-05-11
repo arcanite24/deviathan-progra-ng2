@@ -13,6 +13,9 @@ export class AppComponent {
   public currState: string;
   
   constructor(private router: Router, private auth: AuthService) {
+
+    this.auth.on('user-auth', data => this.isAuth = data);
+
     this.isAuth = this.auth.token ? true : false;
     if(!this.isAuth) {this.router.navigate(['/login']); return;};
     this.router.events.subscribe(value => {

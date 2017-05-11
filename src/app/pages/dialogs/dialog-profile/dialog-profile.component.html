@@ -1,0 +1,13 @@
+<md-dialog-content fxLayout="row" fxLayoutAlign="start center">
+  <div fxFlex="100" *ngIf="loader">
+    <md-spinner></md-spinner>
+  </div>
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+    <h2 class="color-87" fxFlex fxFlexAlign="center">{{user.firstName + ' ' + user.lastName}}</h2>
+    <h4 class="color-display">{{user.email}}</h4>
+  </div>
+</md-dialog-content>
+<md-dialog-actions fxLayout="row" fxLayoutAlign="end end">
+  <span fxFlex></span>
+  <button md-button md-dialog-close>Cerrar</button>
+</md-dialog-actions>

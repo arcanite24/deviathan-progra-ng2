@@ -33,8 +33,6 @@ export class ReportesAdminPageComponent implements OnInit {
       data => {
         this.allReportes = data;
         this.loader = false;
-        console.log(data);
-        
       },
       err => {
         this.snack.open('Error, no se pudieron cargar los reportes', '', {duration: 2000});
@@ -120,7 +118,7 @@ export class EditReporteDialog implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.dialogRef.config.data.id;
+    let id = this.dialogRef.componentInstance.id;
     this.back.getDetailReporte(id).subscribe(
       data => {this.addReporteData = data; this.addReporteData.salon = data.salon ? data.salon.id : null},
       err => this.dialogRef.close({err: err})
@@ -149,6 +147,7 @@ export class AddReporteDialog implements OnInit {
   private addReporteData: any;
   private allSalones: Array<any>;
   private allItems: Array<any>;
+  private isAlumno: boolean;
 
   constructor(
     public dialogRef: MdDialogRef<AddReporteDialog>,
@@ -156,6 +155,7 @@ export class AddReporteDialog implements OnInit {
   ) {
     this.addReporteData = {};
     this.allSalones = [];
+    this.isAlumno = this.dialogRef.componentInstance.isAlumno;
   }
 
   ngOnInit() {

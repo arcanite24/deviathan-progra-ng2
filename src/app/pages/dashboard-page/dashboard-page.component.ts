@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MdDialog } from '@angular/material';
 import { AuthService } from '../../services/auth.service';
 import { routerTransition } from '../../animations/router.animations';
 import { BackServiceService } from '../../services/back-service.service';
+import { DialogProfileComponent } from '../dialogs/dialog-profile/dialog-profile.component';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -20,9 +22,12 @@ export class DashboardPageComponent implements OnInit {
     private auth: AuthService,
     private back: BackServiceService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MdDialog
   ) {
     this.user = this.auth.user;
+    console.log(this.user);
+    
     this.adminInfo = {
       users: 0,
       grupos: 0,
@@ -34,7 +39,7 @@ export class DashboardPageComponent implements OnInit {
     let tempRoles = roles.map(role => {
       if(role == 'ROLE_ADMIN') return 'Administrador';
       if(role == 'ROLE_ALUMNO') return 'Alumno';
-      if(role == 'ROLE_PROFE') return 'Profesor';
+      if(role == 'ROLE_PROFESOR') return 'Profesor';
     });
     return tempRoles.join(', ');
   }
@@ -44,8 +49,9 @@ export class DashboardPageComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout();
-    location.reload();
+    this.auth.logout(() => {
+      this.router.navigate(['/login']);
+    });
   }
 
   ngOnInit() {
@@ -53,6 +59,12 @@ export class DashboardPageComponent implements OnInit {
       data => this.adminInfo = data,
       err => console.log(err)
     );
+  }
+
+  openProfile() {
+    let modal = this.dialog.open(DialogProfileComponent, {
+      width: '50%'
+    });
   }
 
 }
