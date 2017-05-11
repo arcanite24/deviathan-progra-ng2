@@ -51,7 +51,6 @@ export class AuthService {
   }
 
   logout(cb) {
-    this.broadcast('user-auth', false);
     this.user = null;
     this.token = null;
     localStorage.removeItem('user');

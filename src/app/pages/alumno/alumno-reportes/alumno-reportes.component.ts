@@ -44,7 +44,7 @@ export class AlumnoReportesComponent implements OnInit {
     let modal = this.dialog.open(AddReporteDialog, {data: {isAlumno: true}});
     modal.afterClosed().subscribe(data => {
       if(!data) return;
-      this.allReportes.push(data);
+      this.ngOnInit();
     });
   }
 

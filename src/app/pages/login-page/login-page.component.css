@@ -11,6 +11,10 @@ md-card {
     padding: 0;
 }
 
+md-progress-bar {
+    position: absolute;
+}
+
 .login-card {
     background-color: white;
     min-height: 400px;

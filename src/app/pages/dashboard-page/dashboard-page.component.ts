@@ -51,6 +51,7 @@ export class DashboardPageComponent implements OnInit {
   logout() {
     this.auth.logout(() => {
       this.router.navigate(['/login']);
+      this.auth.broadcast('user-auth', false);
     });
   }
 

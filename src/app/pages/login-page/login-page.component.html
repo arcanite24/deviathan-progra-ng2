@@ -1,5 +1,6 @@
 <div class="container">
   <md-card class="login-card">
+    <md-progress-bar *ngIf="loader"></md-progress-bar>
     <img src="assets/images/logo-header.png" alt="Logo Header" class="login-header">
     <div class="login-inputs">
       <md-input-container>
@@ -10,7 +11,6 @@
         <md-icon mdSuffix>lock</md-icon>
         <input type="password" placeholder="Contraseña" [(ngModel)]="loginData.password" mdInput>
       </md-input-container>
-      <md-progress-circle *ngIf="loader" mode="indeterminate" style="width: 48px;"></md-progress-circle>
       <button md-raised-button color="primary" (click)="login(loginData.username, loginData.password)">Iniciar Sesión</button>
       <button md-button color="primary" style="margin-top: 1rem;">No puedo inicar sesión</button>
     </div>

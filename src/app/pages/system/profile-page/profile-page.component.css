@@ -1,0 +1,45 @@
+md-card {
+  padding: 0;
+}
+
+md-progress-bar {
+  position: absolute;
+}
+
+md-list-item h3 {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+md-list-item p {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.profile-container {
+  padding: 1rem;
+}
+
+.profile-header {
+  background-color: #f44336;
+  padding: 1rem;
+}
+
+.profile-name {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.profile-pic {
+  width: 50%;
+}
+
+.profile-info *:not(md-icon) {
+  text-align: left;
+}
+
+.profile-icon {
+  color: #f44336;
+}
+
+.profile-buttons {
+  padding-top: 1rem;
+}

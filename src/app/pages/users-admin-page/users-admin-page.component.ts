@@ -100,7 +100,7 @@ export class UsersManageGroupDialog implements OnInit {
     public dialogRef: MdDialogRef<UsersManageGroupDialog>,
     private back: BackServiceService
   ) {
-    this.id = this.dialogRef.componentInstance.id;
+    this.id = this.dialogRef.config.data.id;
     this.groupData = {};
   }
 

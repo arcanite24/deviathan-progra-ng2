@@ -116,7 +116,7 @@ export class EditSalonDialog implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.dialogRef.componentInstance.id;
+    let id = this.dialogRef.config.data.id;
     this.back.getDetailSalon(id).subscribe(
       data => this.addSalonData = data,
       err => this.dialogRef.close({err: err})

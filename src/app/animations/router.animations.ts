@@ -8,7 +8,7 @@ export function modalTransition() {
   return modalOpen();
 }
 
-function slideToLeft() {
+export function slideToLeft() {
   return trigger('routerTransition', [
     state('void', style({position:'fixed', width:'100%'}) ),
     state('*', style({position:'fixed', width:'100%'}) ),
@@ -23,7 +23,7 @@ function slideToLeft() {
   ]);
 }
 
-function modalOpen() {
+export function modalOpen() {
   return trigger('routerTransition', [
     state('void', style({position:'fixed', width:'100%'}) ),
     state('*', style({position:'fixed', width:'100%'}) ),

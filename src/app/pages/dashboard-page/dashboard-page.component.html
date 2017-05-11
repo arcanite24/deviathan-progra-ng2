@@ -8,7 +8,7 @@
 			</div>
 			<button style="margin-left: 1rem;" md-icon-button [mdMenuTriggerFor]="menu"><md-icon>arrow_drop_down</md-icon></button>
 			<md-menu #menu="mdMenu">
-				<button (click)="openProfile()" md-menu-item><md-icon>person</md-icon> Ver perfil</button>
+				<button routerLink="/perfil" md-menu-item><md-icon>person</md-icon> Ver perfil</button>
 				<button md-menu-item (click)="logout()"><md-icon>exit_to_app</md-icon> Cerrar sesión</button>
 			</md-menu>
 		</div>

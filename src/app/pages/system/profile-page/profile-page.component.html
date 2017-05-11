@@ -1,0 +1,36 @@
+<div class="profile-container row center-xs middle-xs">
+  <md-card class="col-xs-12 col-sm-6 col-md-4">
+    <div class="profile-header">
+      <img src="assets/images/profile-logo.png" alt="Perfil de usuario" class="profile-pic">
+      <h4 class="profile-name">{{user.firstName + ' ' + user.lastName}}</h4>
+    </div>
+    <div class="profile-info">
+      <md-list>
+        <md-list-item>
+          <md-icon md-list-icon class="profile-icon">mail</md-icon>
+          <h3 md-line>Email</h3>
+          <p md-line>{{user.email}}</p>
+        </md-list-item>
+        <md-list-item>
+          <md-icon md-list-icon class="profile-icon">report_problem</md-icon>
+          <h3 md-line>Reportes hechos</h3>
+          <p md-line>{{user.reportes.length | number}}</p>
+        </md-list-item>
+        <md-list-item>
+          <md-icon md-list-icon class="profile-icon">lock</md-icon>
+          <h3 md-line>Permisos</h3>
+          <p md-line>{{getStyledRoles(user.roles)}}</p>
+        </md-list-item>
+        <md-list-item>
+          <md-icon md-list-icon class="profile-icon">perm_contact_calendar</md-icon>
+          <h3 md-line>Fecha de creación</h3>
+          <p md-line>{{user.createdAt | date:'medium'}}</p>
+        </md-list-item>
+      </md-list>
+    </div>
+    <md-progress-bar *ngIf="loader"></md-progress-bar>
+  </md-card>
+  <div class="col-xs-12 profile-buttons">
+    <button md-button routerLink="../">Regresar</button>
+  </div>
+</div>

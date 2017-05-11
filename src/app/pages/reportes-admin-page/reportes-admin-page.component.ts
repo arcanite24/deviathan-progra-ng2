@@ -43,7 +43,11 @@ export class ReportesAdminPageComponent implements OnInit {
   }
 
   openAddReporte() {
-    let dialog = this.dialog.open(AddReporteDialog);
+    let dialog = this.dialog.open(AddReporteDialog, {
+      data: {
+        isAlumno: false
+      }
+    });
     dialog.afterClosed().subscribe(
       data => {
         if(!data) return;
@@ -83,7 +87,8 @@ export class ReportesAdminPageComponent implements OnInit {
     let dialog = this.dialog.open(EditReporteDialog, {
       data: {
         id: id
-      }
+      },
+      width: '50%'
     });
     dialog.afterClosed().subscribe(
       data => {
@@ -118,7 +123,7 @@ export class EditReporteDialog implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.dialogRef.componentInstance.id;
+    let id = this.dialogRef.config.data.id;
     this.back.getDetailReporte(id).subscribe(
       data => {this.addReporteData = data; this.addReporteData.salon = data.salon ? data.salon.id : null},
       err => this.dialogRef.close({err: err})
@@ -155,7 +160,7 @@ export class AddReporteDialog implements OnInit {
   ) {
     this.addReporteData = {};
     this.allSalones = [];
-    this.isAlumno = this.dialogRef.componentInstance.isAlumno;
+    this.isAlumno = this.dialogRef.config.data.isAlumno;
   }
 
   ngOnInit() {
