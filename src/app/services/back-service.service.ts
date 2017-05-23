@@ -112,14 +112,15 @@ export class BackServiceService {
   }
 
   //Horarios
-  addClase(grupo: string, dia: number, inicio: string, fin: string, materia: string, teachers: Array<any>) {
+  addClase(grupo: string, dia: number, inicio: string, fin: string, materia: string, teachers: Array<any>, salon: string) {
     return this.http.post(this.api + 'claseHorario', {
       materia: materia,
       grupo: grupo,
       inicio: inicio,
       fin: fin,
       dia: dia,
-      profesores: teachers
+      profesores: teachers,
+      salon: salon
     }).map(res => res.json());
   }
 
@@ -158,6 +159,10 @@ export class BackServiceService {
 
   getDetailSalon(id: string) {
     return this.http.get(this.api + 'salon/' + id).map(res => res.json());
+  }
+
+  getAllItemsSalon(id: string) {
+    return this.http.get(this.api + 'salon/getAllItems/' + id).map(res => res.json());
   }
 
   //Inventario
@@ -208,6 +213,29 @@ export class BackServiceService {
   // user -> reportes
   getUserReports(id: string) {
     return this.http.get(this.api + 'reporte/getUserReports/' + id).map(res => res.json());
+  }
+
+  // user -> reservas
+  getAvailableHours(id: string) {
+    return this.http.get(this.api + 'salon/getAvailableHours/' + id).map(res => res.json());
+  }
+
+  addReserva(user: string, salon: string, item: string, horaIn: number, horaOut: number) {
+    return this.http.post(this.api + 'reserva', {
+      user: user,
+      salon: salon,
+      item: item,
+      horaIn: horaIn,
+      horaOut: horaOut
+    }).map(res => res.json());
+  }
+
+  getAllReservas() {
+    return this.http.get(this.api + 'reserva').map(res => res.json());
+  }
+
+  getMyReservas() {
+    return this.http.get(this.api + 'reserva/getMyReservas/' + this.auth.user.id).map(res => res.json());
   }
 
 }

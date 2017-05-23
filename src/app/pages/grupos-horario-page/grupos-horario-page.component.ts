@@ -102,6 +102,7 @@ export class AddMateriaHorarioDialog implements OnInit {
   private loader: boolean;
   private horas: Array<string>;
   private allTeachers: Array<any>;
+  private allSalones: Array<any>;
 
   constructor(
     public dialogRef: MdDialogRef<AddMateriaHorarioDialog>,
@@ -140,7 +141,13 @@ export class AddMateriaHorarioDialog implements OnInit {
         this.back.getAllTeachers().subscribe(
           dataTeachers => {
             this.allTeachers = dataTeachers;
-            this.loader = false;
+            this.back.getAllSalones().subscribe(dataSalones => {
+              this.allSalones = dataSalones;
+              this.loader = false;
+            }, err => {
+              this.loader = false;
+              this.dialogRef.close({err: err});
+            });
           },
           err => {
             this.loader = false;
@@ -157,7 +164,7 @@ export class AddMateriaHorarioDialog implements OnInit {
   addClase(data: any, teachers: Array<any>) {
     let id = this.dialogRef.config.data.id;
     let teachersId = teachers.filter(teacher => teacher.imparte).map(teacher => teacher.id);
-    this.back.addClase(id, data.dia, data.inicio, data.fin, data.materia, teachersId).subscribe(
+    this.back.addClase(id, data.dia, data.inicio, data.fin, data.materia, teachersId, data.salon).subscribe(
       res => {
         this.dialogRef.close(res);
       },
@@ -180,6 +187,7 @@ export class DetailClaseDialog implements OnInit {
   private loader: boolean;
   private horas: Array<string>;
   private allTeachers: Array<any>;
+  private allSalones: Array<any>;
 
   constructor(
     public dialogRef: MdDialogRef<DetailClaseDialog>,
@@ -217,7 +225,8 @@ export class DetailClaseDialog implements OnInit {
     this.back.getDetailClase(id).subscribe(
       dataClase => {
         this.addClaseData = dataClase;
-        this.addClaseData.materia = dataClase.materia.id;
+        this.addClaseData.materia = dataClase.materia ? dataClase.materia.id : null;
+        this.addClaseData.salon = dataClase.salon ? dataClase.salon.id : null;
         this.addClaseData.dia = dataClase.dia.toString();
         this.back.getAllMaterias().subscribe(
           data => {
@@ -229,7 +238,16 @@ export class DetailClaseDialog implements OnInit {
                   teacher.imparte = teacherList.indexOf(teacher.id) >= 0;
                   return teacher;
                 });
-                this.loader = false;
+                this.back.getAllSalones().subscribe(
+                  dataSalones => {
+                    this.allSalones = dataSalones;
+                    this.loader = false;
+                  },
+                  err => {
+                    this.loader = false;
+                    this.dialogRef.close({err: err});    
+                  }
+                );
               },
               err => {
                 this.loader = false;

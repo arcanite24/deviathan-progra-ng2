@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
-import { DatepickerModule } from 'angular2-material-datepicker';
 
 import { AuthService } from './services/auth.service';
 import { BackServiceService } from './services/back-service.service';
@@ -33,6 +32,8 @@ import { AlumnoReportesComponent } from './pages/alumno/alumno-reportes/alumno-r
 import { AlumnoHorarioComponent } from './pages/alumno/alumno-horario/alumno-horario.component';
 import { DialogProfileComponent } from './pages/dialogs/dialog-profile/dialog-profile.component';
 import { ProfilePageComponent } from './pages/system/profile-page/profile-page.component';
+import { AlumnoReservasComponent } from './pages/alumno/alumno-reservas/alumno-reservas.component';
+import { AlumnoReservasAddComponent } from './pages/alumno/alumno-reservas-add/alumno-reservas-add.component';
 
 const appRoutes: Routes = [
   // Admin
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
   //Alumno
   {path: 'alumno/reportes', component: AlumnoReportesComponent},
   {path: 'alumno/horario', component: AlumnoHorarioComponent},
+  {path: 'alumno/reservas', component: AlumnoReservasComponent},
 
   //System
   {path: 'perfil', component: ProfilePageComponent},
@@ -109,15 +111,16 @@ const appRoutes: Routes = [
     AlumnoReportesComponent,
     AlumnoHorarioComponent,
     DialogProfileComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AlumnoReservasComponent,
+    AlumnoReservasAddComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
-    DatepickerModule
+    RouterModule.forRoot(appRoutes)
   ],
   entryComponents: [
     ConfirmDeleteUserDialog,
@@ -137,7 +140,8 @@ const appRoutes: Routes = [
     EditReporteDialog,
     ConfirmDeleteReporteDialog,
     GenerateHorarioDialog,
-    DialogProfileComponent
+    DialogProfileComponent,
+    AlumnoReservasAddComponent
   ],
   providers: [AuthService, BackServiceService],
   bootstrap: [AppComponent]

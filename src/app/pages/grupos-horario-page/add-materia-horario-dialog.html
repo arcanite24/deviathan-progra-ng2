@@ -27,6 +27,11 @@
                 <md-option *ngFor="let hora of horas" [value]="hora">{{hora}}</md-option>
             </md-select>
         </div>
+        <div class="col-xs-12" style="margin: 0.5rem 0 1rem">
+            <md-select class="w100" placeholder="Salón" [(ngModel)]="addClaseData.salon">
+                <md-option *ngFor="let salon of allSalones" [value]="salon.id">{{salon.name}}</md-option>
+            </md-select>
+        </div>
         <div class="col-xs-12" style="margin-bottom: 1rem;">
             <h4 class="color-display">Profesores que imparten la materia:</h4>
         </div>
