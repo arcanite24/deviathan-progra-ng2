@@ -75,7 +75,7 @@ body {
 .root-loader {
     background-color: #5A0000;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-flow: column;
     flex-wrap: wrap;

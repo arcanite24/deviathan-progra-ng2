@@ -238,4 +238,21 @@ export class BackServiceService {
     return this.http.get(this.api + 'reserva/getMyReservas/' + this.auth.user.id).map(res => res.json());
   }
 
+  getReservasItem(id: string) {
+    return this.http.get(this.api + 'inventario/getReservasForItem/' + id).map(res => res.json());
+  }
+
+  // user -> notas
+  addNote(text: string) {
+    let data = {
+      text: text,
+      user: this.auth.user.id
+    };
+    return this.http.post(this.api + 'nota', data).map(res => res.json());
+  }
+
+  getUserNotes() {
+    return this.http.get(this.api + 'nota/getUserNotes/' + this.auth.user.id).map(res => res.json());
+  }
+
 }

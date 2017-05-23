@@ -13,7 +13,7 @@ export class AuthService {
   public events;
 
   constructor(private http: Http) {
-    this.api = 'http://test.epsidev.com/';
+    this.api = 'http://localhost:1337/';
     this.user = JSON.parse(localStorage.getItem('user'));
     this.token = localStorage.getItem('token');
     //Login Event Handler

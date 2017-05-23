@@ -22,9 +22,20 @@
   <md-select class="w100 test" placeholder="Hora de salida" [(ngModel)]="addReservaData.out" *ngIf="availableHours">
       <md-option *ngFor="let hora of allHoras" [value]="hora">{{hora + ':00'}}</md-option>
   </md-select>
-  <md-select class="w100 test" placeholder="Computadora" [(ngModel)]="addReservaData.item" *ngIf="allItems">
+  <md-select class="w100 test" placeholder="Computadora" [(ngModel)]="addReservaData.item" *ngIf="allItems" (ngModelChange)="checkItem($event)">
       <md-option *ngFor="let item of allItems" [value]="item.id">{{item.name}}</md-option>
   </md-select>
+  <div class="w100" *ngIf="hoursItem">
+    <md-list>
+      <h3 md-subheader>Horas Ocupadas</h3>
+      <md-list-item *ngIf="hoursItem.length <= 0">
+        <h4 md-line>Ésta PC no tiene reservas. Está disponible todo el día.</h4>
+      </md-list-item>
+      <md-list-item *ngFor="let hora of hoursItem">
+        <h4 md-line>{{hora[0] + ':00' + ' - ' + hora[1] + ':00'}}</h4>
+      </md-list-item>
+    </md-list>
+  </div>
 </md-dialog-content>
 <md-dialog-actions>
   <button md-button md-dialog-close>Cerrar</button>

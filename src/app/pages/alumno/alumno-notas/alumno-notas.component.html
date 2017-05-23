@@ -1,0 +1,16 @@
+<div class="f-container p1rem">
+  <div class="w100 f-container-center">
+    <h4 class="color-display display-icon-text" style="display: inline-flex;">
+      <md-icon>note</md-icon>
+      Notas
+    </h4>
+    <button md-button routerLink="../../" color="accent"style="color: rgba(0, 0, 0, 0.54)" [disabled]="loader"><md-icon>arrow_back</md-icon> Regresar</button>
+    <button md-raised-button color="primary" style="margin-left: auto;" (click)="openAddNote()"><md-icon>add</md-icon>Agregar Nota</button>
+  </div>
+</div>
+<md-progress-bar *ngIf="loader"></md-progress-bar>
+<md-grid-list cols="5" gutterSize="1rem" style="margin: 0 1rem 0;" rowHeight="2:1">
+  <md-grid-tile *ngFor="let note of allNotes" [colspan]="note.cols" [rowspan]="note.rows">
+    <p class="color-87">{{note.text}}</p>
+  </md-grid-tile>
+</md-grid-list>

@@ -18,6 +18,7 @@ export class AlumnoReservasAddComponent implements OnInit {
   private allHoras: Array<number>;
   private allItems: Array<any>;
   private availableHours: Array<any>;
+  private hoursItem: Array<any>;
 
   constructor(
     public dialogRef: MdDialogRef<AlumnoReservasAddComponent>,
@@ -28,6 +29,7 @@ export class AlumnoReservasAddComponent implements OnInit {
     this.addReservaData = {};
     this.loader = false;
     this.availableHours = null;
+    this.hoursItem = null;
     this.allHoras = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
   }
 
@@ -71,6 +73,21 @@ export class AlumnoReservasAddComponent implements OnInit {
     }
   }
 
+  checkItem(id: string) {
+    if(!id) return;
+    this.loader = true;
+    this.back.getReservasItem(id).subscribe(
+      data => {
+        this.hoursItem = data.map(r => [r.horaIn, r.horaOut]);
+        this.loader = false;
+      },
+      err => {
+        this.snack.open('Error, no se pudieron cargar las reservas del Inventario.', '', {duration: 4000});
+        this.loader = false;
+      }
+    );
+  }
+
   addReserva(horaIn: number, horaOut: number, salon: string, item: string) {
     if(!horaIn) return this.snack.open('Error, selecciona una hora de entrada.', '', {duration: 4000});
     if(!horaOut) return this.snack.open('Error, selecciona una hora de salida.', '', {duration: 4000});
@@ -85,6 +102,12 @@ export class AlumnoReservasAddComponent implements OnInit {
     if(horas.indexOf(horaIn) >= 0 && horas.indexOf(horaOut) >= 0) return this.snack.open('Error, no es posible reservar. El salón está ocupado a las horas que quieres solicitar.', '', {duration: 4000});
     if(horas.indexOf(horaIn) >= 0) return this.snack.open('Error, la hora de entrada está ocupada.', '', {duration: 4000});
     if(horas.indexOf(horaOut) >= 0) return this.snack.open('Error, la hora de salida está ocupada.', '', {duration: 4000});
+
+    let horas_cpu = _.flattenDeep(this.hoursItem);
+    horas_cpu = horas_cpu.map(hora => parseInt(hora));
+    if(horas_cpu.indexOf(horaIn) >= 0 && horas_cpu.indexOf(horaOut) >= 0) return this.snack.open('Error, no es posible reservar. La máquina está ocupada en las horas que quieres reservar.', '', {duration: 4000});
+    if(horas_cpu.indexOf(horaIn) >= 0) return this.snack.open('Error, la hora de entrada está ocupada en la máquina que seleccionaste.', '', {duration: 4000});
+    if(horas_cpu.indexOf(horaOut) >= 0) return this.snack.open('Error, la hora de salida está ocupada en la máquina que seleccionaste.', '', {duration: 4000});
 
     this.loader = true;
     this.back.addReserva(this.auth.user.id, salon, item, horaIn, horaOut).subscribe(

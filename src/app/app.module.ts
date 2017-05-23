@@ -34,6 +34,8 @@ import { DialogProfileComponent } from './pages/dialogs/dialog-profile/dialog-pr
 import { ProfilePageComponent } from './pages/system/profile-page/profile-page.component';
 import { AlumnoReservasComponent } from './pages/alumno/alumno-reservas/alumno-reservas.component';
 import { AlumnoReservasAddComponent } from './pages/alumno/alumno-reservas-add/alumno-reservas-add.component';
+import { AlumnoNotasComponent } from './pages/alumno/alumno-notas/alumno-notas.component';
+import { AlumnoNotasAddComponent } from './pages/alumno/alumno-notas-add/alumno-notas-add.component';
 
 const appRoutes: Routes = [
   // Admin
@@ -60,6 +62,7 @@ const appRoutes: Routes = [
   {path: 'alumno/reportes', component: AlumnoReportesComponent},
   {path: 'alumno/horario', component: AlumnoHorarioComponent},
   {path: 'alumno/reservas', component: AlumnoReservasComponent},
+  {path: 'alumno/notas', component: AlumnoNotasComponent},
 
   //System
   {path: 'perfil', component: ProfilePageComponent},
@@ -113,7 +116,9 @@ const appRoutes: Routes = [
     DialogProfileComponent,
     ProfilePageComponent,
     AlumnoReservasComponent,
-    AlumnoReservasAddComponent
+    AlumnoReservasAddComponent,
+    AlumnoNotasComponent,
+    AlumnoNotasAddComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +146,8 @@ const appRoutes: Routes = [
     ConfirmDeleteReporteDialog,
     GenerateHorarioDialog,
     DialogProfileComponent,
-    AlumnoReservasAddComponent
+    AlumnoReservasAddComponent,
+    AlumnoNotasAddComponent
   ],
   providers: [AuthService, BackServiceService],
   bootstrap: [AppComponent]
