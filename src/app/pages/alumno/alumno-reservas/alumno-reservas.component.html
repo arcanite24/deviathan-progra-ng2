@@ -1,0 +1,38 @@
+<div class="f-container p1rem">
+  <div class="w100 f-container-center">
+    <h4 class="color-display display-icon-text" style="display: inline-flex;">
+      <md-icon>date_range</md-icon>
+      Reservas
+    </h4>
+    <button md-button routerLink="../" color="accent"style="color: rgba(0, 0, 0, 0.54)" [disabled]="loader"><md-icon>arrow_back</md-icon> Regresar</button>
+    <button md-raised-button color="primary" style="margin-left: auto;" (click)="openAddReserva()"><md-icon>add</md-icon>Agendar Reserva</button>
+    
+  </div>
+  <div class="w100" style="margin-top: 0.5rem;">
+    <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+    <div class="row">
+      <md-card class="r-table col-md-6 col-xs-12">
+        <md-card-content>
+          <h5 class="color-display">Todas las reservas de hoy</h5>
+          <md-list>
+            <md-list-item *ngFor="let r of allReservas">
+              <h4 md-line>{{r.salon.name}}</h4>
+              <p md-line>{{r.user.firstName}}, {{r.horaIn}}:00-{{r.horaOut}}:00 <em>{{r.item.name}}</em></p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+      <md-card class="r-own col-md-6 col-xs-12">
+        <md-card-content>
+          <h5 class="color-display">Todas mis reservas</h5>
+          <md-list>
+            <md-list-item *ngFor="let r of myReservas">
+              <h4 md-line>{{r.salon.name}}</h4>
+              <p md-line>{{r.user.firstName}}, {{r.horaIn}}:00-{{r.horaOut}}:00 <em>{{r.item.name}}</em></p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</div>

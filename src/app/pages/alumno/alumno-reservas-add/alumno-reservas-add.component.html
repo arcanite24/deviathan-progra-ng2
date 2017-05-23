@@ -1,0 +1,32 @@
+<h1 md-dialog-title class="color-87">Agendar Reserva</h1>
+<md-dialog-content style="padding: 1rem;">
+  <md-progress-bar *ngIf="loader"></md-progress-bar>
+  <md-select class="w100" placeholder="Salón" [(ngModel)]="addReservaData.salon" (ngModelChange)="changeSalon($event)">
+      <md-option *ngFor="let salon of allSalones" [value]="salon.id">{{salon.name}}</md-option>
+  </md-select>
+  <div class="w100" *ngIf="availableHours">
+    <md-list>
+      <h3 md-subheader>Horas Ocupadas</h3>
+      <md-list-item *ngIf="availableHours.length <= 0">
+        <h4 md-line>Salón disponible todo el día, de 6:00 a 22:00</h4>
+      </md-list-item>
+      <md-list-item *ngFor="let hora of availableHours">
+        <h4 md-line>{{hora[0] + ':00' + ' - ' + hora[1] + ':00'}}</h4>
+        <p md-line>Clase: {{hora[2]}}</p>
+      </md-list-item>
+    </md-list>
+  </div>
+  <md-select class="w100 test" placeholder="Hora de entrada" [(ngModel)]="addReservaData.in" (ngModelChange)="checkIn($event)" *ngIf="availableHours">
+      <md-option *ngFor="let hora of allHoras" [value]="hora">{{hora + ':00'}}</md-option>
+  </md-select>
+  <md-select class="w100 test" placeholder="Hora de salida" [(ngModel)]="addReservaData.out" *ngIf="availableHours">
+      <md-option *ngFor="let hora of allHoras" [value]="hora">{{hora + ':00'}}</md-option>
+  </md-select>
+  <md-select class="w100 test" placeholder="Computadora" [(ngModel)]="addReservaData.item" *ngIf="allItems">
+      <md-option *ngFor="let item of allItems" [value]="item.id">{{item.name}}</md-option>
+  </md-select>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>Cerrar</button>
+  <button md-button (click)="addReserva(addReservaData.in, addReservaData.out, addReservaData.salon, addReservaData.item)">Reservar</button>
+</md-dialog-actions>

@@ -24,7 +24,9 @@
         "assets/green-grey.scss",
         "assets/md-table.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/moment.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
