@@ -1,3 +1,33 @@
-<p>
-  profesor-tareas-edit works!
-</p>
+<h1 md-dialog-title>Editar Tarea</h1>
+
+<md-dialog-content style="overflow-y: visible">
+  <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+  <div class="row">
+    <div class="col-md-6">
+      <md-radio-group class="example-radio-group" [(ngModel)]="tarea.clase">
+        <md-radio-button class="example-radio-button" *ngFor="let clase of allClases" [value]="clase">
+          <strong>{{clase.materia.name}}</strong> - {{clase.grupo.nombre}}
+        </md-radio-button>
+      </md-radio-group>
+    </div>
+    <div class="col-md-6">
+      <ng2-datepicker [options]="options" [(ngModel)]="entregaModel" [disabled]="!tarea.clase"></ng2-datepicker>
+    </div>
+    <div fxFlex="100" fxLayout="column" class="w100" style="margin-top: 4rem; margin-bottom: 4rem;">
+      <md-input-container fxFlex="100" class="w100">
+        <input type="text" mdInput [(ngModel)]="tarea.title" placeholder="Titulo" [disabled]="!tarea.clase">
+      </md-input-container>
+      <div fxFlex="100" class="w100">
+        <md-input-container floatPlaceholder="auto" class="w100">
+            <textarea mdInput mdTextareaAutosize name="tarea.description" [(ngModel)]="tarea.desc"
+                      placeholder="Descrición" [disabled]="!tarea.clase"></textarea>
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+</md-dialog-content>
+
+<md-dialog-actions [attr.align]="end">
+    <button md-button md-dialog-close color="danger">Cerrar</button>
+    <button md-button [disabled]="loader" color="accent" (click)="editTarea(tarea.clase, tarea.title, tarea.desc, entregaModel.formatted, tarea.id)">Editar</button>
+</md-dialog-actions>

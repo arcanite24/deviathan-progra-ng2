@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
+import { DatePickerModule } from 'ng2-datepicker';
 
 import { AuthService } from './services/auth.service';
 import { BackServiceService } from './services/back-service.service';
@@ -40,6 +41,8 @@ import { AlumnoNotasEditComponent } from './pages/alumno/alumno-notas-edit/alumn
 import { ProfesorTareasComponent } from './pages/profesor/profesor-tareas/profesor-tareas.component';
 import { ProfesorTareasAddComponent } from './pages/profesor/profesor-tareas-add/profesor-tareas-add.component';
 import { ProfesorTareasEditComponent } from './pages/profesor/profesor-tareas-edit/profesor-tareas-edit.component';
+import { ProfesorTareasDeleteComponent } from './pages/profesor/profesor-tareas-delete/profesor-tareas-delete.component';
+import { AlumnoTareasComponent } from './pages/alumno/alumno-tareas/alumno-tareas.component';
 
 const appRoutes: Routes = [
   // Admin
@@ -67,6 +70,7 @@ const appRoutes: Routes = [
   {path: 'alumno/horario', component: AlumnoHorarioComponent},
   {path: 'alumno/reservas', component: AlumnoReservasComponent},
   {path: 'alumno/notas', component: AlumnoNotasComponent},
+  {path: 'alumno/tareas', component: AlumnoTareasComponent},
 
   //Profesor
   {path: 'profesor/tareas', component: ProfesorTareasComponent},
@@ -130,14 +134,17 @@ const appRoutes: Routes = [
     UsersManageGroupDialogTeachers,
     ProfesorTareasComponent,
     ProfesorTareasAddComponent,
-    ProfesorTareasEditComponent
+    ProfesorTareasEditComponent,
+    ProfesorTareasDeleteComponent,
+    AlumnoTareasComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DatePickerModule
   ],
   entryComponents: [
     ConfirmDeleteUserDialog,
@@ -163,7 +170,8 @@ const appRoutes: Routes = [
     AlumnoNotasEditComponent,
     UsersManageGroupDialogTeachers,
     ProfesorTareasAddComponent,
-    ProfesorTareasEditComponent
+    ProfesorTareasEditComponent,
+    ProfesorTareasDeleteComponent
   ],
   providers: [AuthService, BackServiceService],
   bootstrap: [AppComponent]

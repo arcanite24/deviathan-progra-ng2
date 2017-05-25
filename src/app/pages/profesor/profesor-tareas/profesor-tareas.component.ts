@@ -1,3 +1,5 @@
+import { ProfesorTareasDeleteComponent } from './../profesor-tareas-delete/profesor-tareas-delete.component';
+import { ProfesorTareasEditComponent } from './../profesor-tareas-edit/profesor-tareas-edit.component';
 import { ProfesorTareasAddComponent } from './../profesor-tareas-add/profesor-tareas-add.component';
 import { MdSnackBar, MdDialog } from '@angular/material';
 import { BackServiceService } from './../../../services/back-service.service';
@@ -46,6 +48,34 @@ export class ProfesorTareasComponent implements OnInit {
     modal.afterClosed().subscribe(
       data => {
         if(!data) return;
+        if(data.err) return;
+        this.ngOnInit();
+      }
+    );
+  }
+
+  openEditTarea(id: string) {
+    let modal = this.dialog.open(ProfesorTareasEditComponent, {
+      width: '50%',
+      data: {id: id}
+    });
+    modal.afterClosed().subscribe(
+      data => {
+        if(!data) return;
+        this.ngOnInit();
+      }
+    );
+  }
+
+  openDeleteTarea(id: string, i: number) {
+    let modal = this.dialog.open(ProfesorTareasDeleteComponent, {
+      width: '50%',
+      data: {id: id}
+    });
+    modal.afterClosed().subscribe(
+      data => {
+        if(!data) return;
+        if(data.yes) this.allTareas.splice(i, 1);
       }
     );
   }

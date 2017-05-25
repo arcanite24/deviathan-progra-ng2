@@ -276,4 +276,39 @@ export class BackServiceService {
     return this.http.get(this.api + 'materia/getClasesProfesor/' + this.auth.user.id).map(res => res.json());
   }
 
+  addTarea(clase, title, desc, entrega) {
+    return this.http.post(this.api + 'tarea', {
+      profesor: this.auth.user.id,
+      title: title,
+      desc: desc,
+      materia: clase.materia.id,
+      grupo: clase.grupo.id,
+      entrega: entrega
+    }).map(res => res.json());
+  }
+
+  editTarea(clase, title, desc, entrega, id) {
+    return this.http.put(this.api + 'tarea/' + id, {
+      profesor: this.auth.user.id,
+      title: title,
+      desc: desc,
+      materia: clase.materia.id,
+      grupo: clase.grupo.id,
+      entrega: entrega
+    }).map(res => res.json());
+  }
+
+  getTareaDetail(id: string) {
+    return this.http.get(this.api + 'tarea/' + id).map(res => res.json());
+  }
+
+  deleteTarea(id: string) {
+    return this.http.delete(this.api + 'tarea/' + id).map(res => res.json());
+  }
+
+  // alumno -> tareas
+  getAllTareasAlumno() {
+    return this.http.get(this.api + 'tarea/getAllTareasAlumno/' + this.auth.user.id).map(res => res.json());
+  }
+
 }
