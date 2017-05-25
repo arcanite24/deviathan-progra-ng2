@@ -1,0 +1,31 @@
+<div class="f-container p1rem">
+  <div class="w100 f-container-center">
+    <h4 class="color-display display-icon-text" style="display: inline-flex;">
+      <md-icon>assignment</md-icon>
+      Tareas
+    </h4>
+    <button md-button routerLink="../" color="accent"style="color: rgba(0, 0, 0, 0.54)" [disabled]="loader"><md-icon>arrow_back</md-icon> Regresar</button>
+    <button md-raised-button color="primary" style="margin-left: auto;" (click)="openAddTarea()"><md-icon>add</md-icon>Agregar Tarea</button>
+  </div>
+  <md-card class="w100" style="padding: 0.5rem 1rem 0; margin-top: 0.5rem;">
+    <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+    <table class="md-table w100">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Descripción</th>
+          <th>Materia</th>
+          <th>Grupo</th>
+          <th>Fecha de entrega</th>
+          <th>Fecha agregada</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tarea of allTareas; let i = index" [attr.data-index]="i">
+          
+        </tr>
+      </tbody>
+    </table>
+  </md-card>
+</div>

@@ -12,7 +12,7 @@ import { BackServiceService } from './services/back-service.service';
 import { AppComponent } from './app.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { TeachersAdminPageComponent, ConfirmDeleteTeacherDialog } from './pages/teachers-admin-page/teachers-admin-page.component';
+import { TeachersAdminPageComponent, ConfirmDeleteTeacherDialog, UsersManageGroupDialogTeachers } from './pages/teachers-admin-page/teachers-admin-page.component';
 import { UsersAdminPageComponent, ConfirmDeleteUserDialog, FilterPipe, UsersManageGroupDialog } from './pages/users-admin-page/users-admin-page.component';
 import { UsersAddPageComponent } from './pages/users-add-page/users-add-page.component';
 import { UsersEditPageComponent } from './pages/users-edit-page/users-edit-page.component';
@@ -36,6 +36,10 @@ import { AlumnoReservasComponent } from './pages/alumno/alumno-reservas/alumno-r
 import { AlumnoReservasAddComponent } from './pages/alumno/alumno-reservas-add/alumno-reservas-add.component';
 import { AlumnoNotasComponent } from './pages/alumno/alumno-notas/alumno-notas.component';
 import { AlumnoNotasAddComponent } from './pages/alumno/alumno-notas-add/alumno-notas-add.component';
+import { AlumnoNotasEditComponent } from './pages/alumno/alumno-notas-edit/alumno-notas-edit.component';
+import { ProfesorTareasComponent } from './pages/profesor/profesor-tareas/profesor-tareas.component';
+import { ProfesorTareasAddComponent } from './pages/profesor/profesor-tareas-add/profesor-tareas-add.component';
+import { ProfesorTareasEditComponent } from './pages/profesor/profesor-tareas-edit/profesor-tareas-edit.component';
 
 const appRoutes: Routes = [
   // Admin
@@ -63,6 +67,9 @@ const appRoutes: Routes = [
   {path: 'alumno/horario', component: AlumnoHorarioComponent},
   {path: 'alumno/reservas', component: AlumnoReservasComponent},
   {path: 'alumno/notas', component: AlumnoNotasComponent},
+
+  //Profesor
+  {path: 'profesor/tareas', component: ProfesorTareasComponent},
 
   //System
   {path: 'perfil', component: ProfilePageComponent},
@@ -118,7 +125,12 @@ const appRoutes: Routes = [
     AlumnoReservasComponent,
     AlumnoReservasAddComponent,
     AlumnoNotasComponent,
-    AlumnoNotasAddComponent
+    AlumnoNotasAddComponent,
+    AlumnoNotasEditComponent,
+    UsersManageGroupDialogTeachers,
+    ProfesorTareasComponent,
+    ProfesorTareasAddComponent,
+    ProfesorTareasEditComponent
   ],
   imports: [
     BrowserModule,
@@ -147,7 +159,11 @@ const appRoutes: Routes = [
     GenerateHorarioDialog,
     DialogProfileComponent,
     AlumnoReservasAddComponent,
-    AlumnoNotasAddComponent
+    AlumnoNotasAddComponent,
+    AlumnoNotasEditComponent,
+    UsersManageGroupDialogTeachers,
+    ProfesorTareasAddComponent,
+    ProfesorTareasEditComponent
   ],
   providers: [AuthService, BackServiceService],
   bootstrap: [AppComponent]

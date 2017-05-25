@@ -255,4 +255,25 @@ export class BackServiceService {
     return this.http.get(this.api + 'nota/getUserNotes/' + this.auth.user.id).map(res => res.json());
   }
 
+  getNoteDetail(id: string) {
+    return this.http.get(this.api + 'nota/' + id).map(res => res.json());
+  }
+
+  editNote(id: string, text: string) {
+    return this.http.put(this.api + 'nota/' + id, {text: text}).map(res => res.json());
+  }
+
+  deleteNote(id: string) {
+    return this.http.delete(this.api + 'nota/' + id).map(res => res.json());
+  }
+
+  // profesor -> tareas
+  getAllTareasProfesor() {
+    return this.http.get(this.api + 'tarea/getAllTareasProfesor/' + this.auth.user.id).map(res => res.json());
+  }
+
+  getClasesProfesor() {
+    return this.http.get(this.api + 'materia/getClasesProfesor/' + this.auth.user.id).map(res => res.json());
+  }
+
 }

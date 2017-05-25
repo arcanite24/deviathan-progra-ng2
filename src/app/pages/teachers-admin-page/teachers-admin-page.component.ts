@@ -25,7 +25,7 @@ export class TeachersAdminPageComponent implements OnInit {
   }
 
   openManageGroup(id: string) {
-    let dialog = this.dialog.open(UsersManageGroupDialog, {
+    let dialog = this.dialog.open(UsersManageGroupDialogTeachers, {
       data: {
         id: id
       }
@@ -90,17 +90,17 @@ export class ConfirmDeleteTeacherDialog {
   selector: 'users-manage-group-dialog',
   templateUrl: './users-manage-group-dialog.html'
 })
-export class UsersManageGroupDialog implements OnInit {
+export class UsersManageGroupDialogTeachers implements OnInit {
 
   private id: string;
   private allGrupos: Array<any>;
   private groupData: any;
 
   constructor(
-    public dialogRef: MdDialogRef<UsersManageGroupDialog>,
+    public dialogRef: MdDialogRef<UsersManageGroupDialogTeachers>,
     private back: BackServiceService
   ) {
-    this.id = this.dialogRef.componentInstance.id;
+    this.id = this.dialogRef.config.data.id;
     this.groupData = {};
   }
 
