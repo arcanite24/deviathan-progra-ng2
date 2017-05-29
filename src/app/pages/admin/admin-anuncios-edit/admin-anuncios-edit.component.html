@@ -1,0 +1,17 @@
+<h2 id="color-display" md-dialog-title>Editar Anuncio</h2>
+<md-dialog-content>
+  <md-progress-bar *ngIf="loader" mode="indeterminate"></md-progress-bar>
+  <div class="row p1rem">
+    <md-input-container class="col-xs-12">
+          <input mdInput placeholder="Titulo" [(ngModel)]="anuncio.title">
+      </md-input-container>
+      <md-input-container class="col-xs-12">
+          <textarea mdInput placeholder="Nombre" [(ngModel)]="anuncio.text"></textarea>
+          <md-icon mdSuffix>note</md-icon>
+      </md-input-container>
+  </div>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>Cerrar</button>
+  <button md-button (click)="editAnuncio(anuncio.id, anuncio.text, anuncio.title)" [disabled]="loader">Editar</button>
+</md-dialog-actions>

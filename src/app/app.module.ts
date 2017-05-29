@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 import { DatePickerModule } from 'ng2-datepicker';
+import { DropzoneModule, DropzoneConfigInterface } from 'angular2-dropzone-wrapper';
 
 import { AuthService } from './services/auth.service';
 import { BackServiceService } from './services/back-service.service';
@@ -43,6 +44,13 @@ import { ProfesorTareasAddComponent } from './pages/profesor/profesor-tareas-add
 import { ProfesorTareasEditComponent } from './pages/profesor/profesor-tareas-edit/profesor-tareas-edit.component';
 import { ProfesorTareasDeleteComponent } from './pages/profesor/profesor-tareas-delete/profesor-tareas-delete.component';
 import { AlumnoTareasComponent } from './pages/alumno/alumno-tareas/alumno-tareas.component';
+import { AlumnoTareasRespuestaAddComponent } from './pages/alumno/alumno-tareas-respuesta-add/alumno-tareas-respuesta-add.component';
+import { AlumnoTareasDetailComponent } from './pages/alumno/alumno-tareas-detail/alumno-tareas-detail.component';
+import { AdminAnunciosComponent } from './pages/admin/admin-anuncios/admin-anuncios.component';
+import { AdminAnunciosAddComponent } from './pages/admin/admin-anuncios-add/admin-anuncios-add.component';
+import { AdminAnunciosDeleteComponent } from './pages/admin/admin-anuncios-delete/admin-anuncios-delete.component';
+import { AdminAnunciosEditComponent } from './pages/admin/admin-anuncios-edit/admin-anuncios-edit.component';
+import { AlumnoAnunciosComponent } from './pages/alumno/alumno-anuncios/alumno-anuncios.component';
 
 const appRoutes: Routes = [
   // Admin
@@ -64,6 +72,7 @@ const appRoutes: Routes = [
   {path: 'salones', component: SalonesAdminPageComponent},
   {path: 'inventario', component: InventarioAdminPageComponent},
   {path: 'reportes', component: ReportesAdminPageComponent},
+  {path: 'anuncios', component: AdminAnunciosComponent},
   
   //Alumno
   {path: 'alumno/reportes', component: AlumnoReportesComponent},
@@ -71,6 +80,7 @@ const appRoutes: Routes = [
   {path: 'alumno/reservas', component: AlumnoReservasComponent},
   {path: 'alumno/notas', component: AlumnoNotasComponent},
   {path: 'alumno/tareas', component: AlumnoTareasComponent},
+  {path: 'alumno/anuncios', component: AlumnoAnunciosComponent},
 
   //Profesor
   {path: 'profesor/tareas', component: ProfesorTareasComponent},
@@ -81,6 +91,11 @@ const appRoutes: Routes = [
   {path: '**', redirectTo: '/'},
 
 ];
+
+const DROP_CONFIG: DropzoneConfigInterface = {
+  server: 'http://test.epsidev.com/dashboard/upload/',
+  maxFilesize: 50
+}
 
 @NgModule({
   declarations: [
@@ -136,7 +151,14 @@ const appRoutes: Routes = [
     ProfesorTareasAddComponent,
     ProfesorTareasEditComponent,
     ProfesorTareasDeleteComponent,
-    AlumnoTareasComponent
+    AlumnoTareasComponent,
+    AlumnoTareasRespuestaAddComponent,
+    AlumnoTareasDetailComponent,
+    AdminAnunciosComponent,
+    AdminAnunciosAddComponent,
+    AdminAnunciosDeleteComponent,
+    AdminAnunciosEditComponent,
+    AlumnoAnunciosComponent
   ],
   imports: [
     BrowserModule,
@@ -144,7 +166,8 @@ const appRoutes: Routes = [
     HttpModule,
     MaterialModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    DatePickerModule
+    DatePickerModule,
+    DropzoneModule.forRoot(DROP_CONFIG)
   ],
   entryComponents: [
     ConfirmDeleteUserDialog,
@@ -171,7 +194,12 @@ const appRoutes: Routes = [
     UsersManageGroupDialogTeachers,
     ProfesorTareasAddComponent,
     ProfesorTareasEditComponent,
-    ProfesorTareasDeleteComponent
+    ProfesorTareasDeleteComponent,
+    AlumnoTareasRespuestaAddComponent,
+    AlumnoTareasDetailComponent,
+    AdminAnunciosEditComponent,
+    AdminAnunciosDeleteComponent,
+    AdminAnunciosAddComponent
   ],
   providers: [AuthService, BackServiceService],
   bootstrap: [AppComponent]

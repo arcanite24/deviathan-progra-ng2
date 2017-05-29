@@ -155,6 +155,23 @@
 							</div>
 						</div>
 					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>announcement</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Anuncios</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<strong class="color-87">Total: </strong>
+								<span class="color-display">{{adminInfo.reportes || 0 | number}}</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="/anuncios">Administrar anuncios</button>
+							</div>
+						</div>
+					</md-card>
 				</div>
 			</div>
 		</div>
@@ -210,8 +227,7 @@
 								<h4 class="color-display">Reportes</h4>
 							</div>
 							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
-								<strong class="color-87">Total: </strong>
-								<span class="color-display">{{user.reportes.length || 0 | number}}</span>
+								<span class="color-display">Reportes de fallos de equipo</span>
 							</div>
 							<div class="col-xs-12">
 								<button color="primary" md-button routerLink="alumno/reportes">Ver mis reportes</button>
@@ -221,14 +237,13 @@
 					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
 						<div class="row center-xs">
 							<div class="col-xs-12 color-display">
-								<md-icon>assignment</md-icon>
+								<md-icon>perm_contact_calendar</md-icon>
 							</div>
 							<div class="col-xs-12">
 								<h4 class="color-display">Horario</h4>
 							</div>
 							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
-								<strong class="color-87">Clases hoy : </strong>
-								<span class="color-display">{{user.reportes.length || 0 | number}}</span>
+								<span class="color-display">Calendario de clases</span>
 							</div>
 							<div class="col-xs-12">
 								<button color="primary" md-button routerLink="alumno/horario" [disabled]="!user.grupo">Ver mi horario</button>
@@ -264,6 +279,38 @@
 							</div>
 							<div class="col-xs-12">
 								<button color="primary" md-button routerLink="alumno/notas">Gestionar Notas</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>assignment</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Tareas</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<span class="color-display">Gestiona tus tareas</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="alumno/tareas">Ver Tareas</button>
+							</div>
+						</div>
+					</md-card>
+					<md-card class="col-xs-12 col-sm-6 col-md-3 dashboard-card">
+						<div class="row center-xs">
+							<div class="col-xs-12 color-display">
+								<md-icon>announcement</md-icon>
+							</div>
+							<div class="col-xs-12">
+								<h4 class="color-display">Anuncios</h4>
+							</div>
+							<div class="col-xs-12 center-xs border-down" style="margin-top: 1rem; padding-bottom: 1rem; margin-bottom: 1rem;">
+								<span class="color-display">Anuncios del plantel</span>
+							</div>
+							<div class="col-xs-12">
+								<button color="primary" md-button routerLink="alumno/anuncios">Ver Anuncios</button>
 							</div>
 						</div>
 					</md-card>

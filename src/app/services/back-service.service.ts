@@ -208,6 +208,27 @@ export class BackServiceService {
     return this.http.get(this.api + 'reporte/' + id).map(res => res.json());
   }
 
+  //Anuncios
+  getAllAnuncios() {
+    return this.http.get(this.api + 'anuncio').map(res => res.json());
+  }
+
+  addAnuncio(text: string, title: string) {
+    return this.http.post(this.api + 'anuncio', {text, title}).map(res => res.json());
+  }
+
+  getAnuncioDetail(id: string) {
+    return this.http.get(this.api + 'anuncio/' + id).map(res => res.json());
+  }
+
+  editAnuncio(id: string, text: string, title: string) {
+    return this.http.put(this.api + 'anuncio/' + id, {text, title}).map(res => res.json());
+  }
+
+  deleteAnuncio(id: string) {
+    return this.http.delete(this.api + 'anuncio/' + id).map(res => res.json());
+  }
+
   /* USER MODULES */
 
   // user -> reportes
@@ -309,6 +330,18 @@ export class BackServiceService {
   // alumno -> tareas
   getAllTareasAlumno() {
     return this.http.get(this.api + 'tarea/getAllTareasAlumno/' + this.auth.user.id).map(res => res.json());
+  }
+
+  addRespuesta(id: string, text: string) {
+    return this.http.post(this.api + 'respuestaTarea', {
+      tarea: id,
+      text: text,
+      alumno: this.auth.user.id
+    }).map(res => res.json());
+  }
+
+  getMyRespuestas() {
+    return this.http.get(this.api + 'respuestaTarea/getMyRespuestas/' + this.auth.user.id).map(res => res.json());
   }
 
 }

@@ -1,0 +1,9 @@
+<h4 class="color-display" md-dialog-title>Eliminar Anuncio</h4>
+<md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+<md-dialog-content>
+  <h5>¿Estás seguro que quieres eliminar el anuncio?</h5>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button (click)="deleteAnuncio()" [disabled]="loader">Sí</button>
+  <button md-button md-dialog-close>No</button>
+</md-dialog-actions>

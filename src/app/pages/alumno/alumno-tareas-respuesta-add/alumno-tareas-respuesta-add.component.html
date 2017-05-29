@@ -1,0 +1,11 @@
+<h4 class="color-display" md-dialog-title>Agregar Respuesta</h4>
+<md-dialog-content>
+  <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+  <md-input-container class="w100">
+    <textarea mdInput placeholder="Texto" [(ngModel)]="addRespuestaData.text"></textarea>
+  </md-input-container>
+</md-dialog-content>
+<md-dialog-actions>
+  <button type="button" md-button color="warn" md-dialog-close>Cerrar</button>
+  <button md-button (click)="addRespuesta(addRespuestaData.text)">Agregar</button>
+</md-dialog-actions>

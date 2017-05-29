@@ -1,0 +1,17 @@
+<h2 id="color-display" md-dialog-title>Agregar Anuncio</h2>
+<md-dialog-content>
+  <md-progress-bar *ngIf="loader"></md-progress-bar>
+  <div class="row p1rem">
+    <md-input-container class="col-xs-12">
+          <input mdInput placeholder="Titulo" [(ngModel)]="addAnuncioData.title">
+      </md-input-container>
+      <md-input-container class="col-xs-12">
+          <textarea mdInput placeholder="Nombre" [(ngModel)]="addAnuncioData.text"></textarea>
+          <md-icon mdSuffix>note</md-icon>
+      </md-input-container>
+  </div>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>Cerrar</button>
+  <button md-button (click)="addAnuncio(addAnuncioData.text, addAnuncioData.title)">Agregar</button>
+</md-dialog-actions>

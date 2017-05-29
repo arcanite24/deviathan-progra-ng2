@@ -1,0 +1,26 @@
+<h4 class="color-display" md-dialog-title>{{tarea.title}}</h4>
+<md-dialog-content>
+  <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="color-87"><strong>{{tarea.materia ? tarea.materia.name : 'Cargando materia...'}}</strong></p>
+      <p class="color-87">{{tarea.desc}}</p>
+    </div>
+    <div class="col-md-12">
+      <p class="color-87"><strong>Fecha de entrega: </strong> {{tarea.entrega}}</p>
+      <p class="color-87"><strong>Fecha que se dejó: </strong> {{tarea.createdAt | date:'medium'}}</p>
+    </div>
+    <div class="col-md-12">
+      <md-list>
+        <h3 md-subheader>Mis respuestas</h3>
+        <md-list-item *ngFor="let r of allRespuestas">
+            <h4 md-line>{{r.createdAt | date:'medium'}}</h4>
+            <p md-line>{{r.text}}</p>
+        </md-list-item>
+      </md-list>
+    </div>
+  </div>
+</md-dialog-content>
+<md-dialog-actions>
+  <button type="button" md-button color="warn" md-dialog-close>Cerrar</button>
+</md-dialog-actions>

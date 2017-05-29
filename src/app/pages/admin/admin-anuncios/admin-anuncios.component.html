@@ -1,0 +1,34 @@
+<div class="f-container p1rem">
+  <div class="w100 f-container-center">
+    <h4 class="color-display display-icon-text" style="display: inline-flex;">
+      <md-icon>announcement</md-icon>
+      Anuncios
+    </h4>
+    <button md-button routerLink="../" color="accent"style="color: rgba(0, 0, 0, 0.54)" [disabled]="loader"><md-icon>arrow_back</md-icon> Regresar</button>
+    <button md-raised-button color="primary" style="margin-left: auto;" (click)="openAddAnuncio()"><md-icon>add</md-icon>Agregar Anuncio</button>
+  </div>
+  <md-card class="w100" style="padding: 0.5rem 1rem 0; margin-top: 0.5rem;">
+    <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+    <table class="md-table w100">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Descripción</th>
+          <th>Fecha agregado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let anuncio of allAnuncios; let i = index" [attr.data-index]="i">
+          <td>{{anuncio.title}}</td>
+          <td>{{anuncio.text}}</td>
+          <td>{{anuncio.createdAt | date:'medium'}}</td>
+          <td>
+            <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Editar anuncio" md-button (click)="openEditAnuncio(anuncio.id)"><md-icon>border_color</md-icon></button>
+            <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Borrar anuncio" md-button (click)="openDeleteAnuncio(anuncio.id, i)"><md-icon>delete</md-icon></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-card>
+</div>
