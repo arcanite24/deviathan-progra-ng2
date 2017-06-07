@@ -25,6 +25,8 @@
         "assets/md-table.scss"
       ],
       "scripts": [
+        "assets/js/socket.io.js",
+        "assets/js/easyrtc.js",
         "assets/js/moment.js"
       ],
       "environmentSource": "environments/environment.ts",

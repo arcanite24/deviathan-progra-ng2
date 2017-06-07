@@ -1,0 +1,10 @@
+<h2 md-dialog-title>Borrar Clase Online</h2>
+<md-dialog-content>
+  <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+  <h4>¿Estás seguro que quieres borrar la clase online?</h4>
+</md-dialog-content>
+
+<md-dialog-actions>
+  <button color="warn" (click)="deleteClaseOnline()" md-button>Sí</button>
+  <button md-dialog-close md-button>Cancelar</button>
+</md-dialog-actions>

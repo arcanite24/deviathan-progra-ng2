@@ -51,6 +51,9 @@ import { AdminAnunciosAddComponent } from './pages/admin/admin-anuncios-add/admi
 import { AdminAnunciosDeleteComponent } from './pages/admin/admin-anuncios-delete/admin-anuncios-delete.component';
 import { AdminAnunciosEditComponent } from './pages/admin/admin-anuncios-edit/admin-anuncios-edit.component';
 import { AlumnoAnunciosComponent } from './pages/alumno/alumno-anuncios/alumno-anuncios.component';
+import { ProfesorOnlineClassComponent } from './pages/profesor/profesor-online-class/profesor-online-class.component';
+import { ProfesorOnlineClassAddComponent } from './pages/profesor/profesor-online-class-add/profesor-online-class-add.component';
+import { ProfesorOnlineClassDeleteComponent } from './pages/profesor/profesor-online-class-delete/profesor-online-class-delete.component';
 
 const appRoutes: Routes = [
   // Admin
@@ -84,6 +87,7 @@ const appRoutes: Routes = [
 
   //Profesor
   {path: 'profesor/tareas', component: ProfesorTareasComponent},
+  {path: 'profesor/clases-online', component: ProfesorOnlineClassComponent},
 
   //System
   {path: 'perfil', component: ProfilePageComponent},
@@ -158,7 +162,10 @@ const DROP_CONFIG: DropzoneConfigInterface = {
     AdminAnunciosAddComponent,
     AdminAnunciosDeleteComponent,
     AdminAnunciosEditComponent,
-    AlumnoAnunciosComponent
+    AlumnoAnunciosComponent,
+    ProfesorOnlineClassComponent,
+    ProfesorOnlineClassAddComponent,
+    ProfesorOnlineClassDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -199,7 +206,9 @@ const DROP_CONFIG: DropzoneConfigInterface = {
     AlumnoTareasDetailComponent,
     AdminAnunciosEditComponent,
     AdminAnunciosDeleteComponent,
-    AdminAnunciosAddComponent
+    AdminAnunciosAddComponent,
+    ProfesorOnlineClassAddComponent,
+    ProfesorOnlineClassDeleteComponent
   ],
   providers: [AuthService, BackServiceService],
   bootstrap: [AppComponent]

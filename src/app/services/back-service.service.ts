@@ -327,6 +327,19 @@ export class BackServiceService {
     return this.http.delete(this.api + 'tarea/' + id).map(res => res.json());
   }
 
+  // profesor -> clases online
+  getAllClasesOnlineProfesor() {
+    return this.http.get(this.api + 'claseOnline/getAllClasesOnlineProfesor/' + this.auth.user.id).map(res => res.json());
+  }
+
+  addClaseOnline(title: string, desc: string, materia: string, fechaInicio: string) {
+    return this.http.post(this.api + 'claseOnline', {title, desc, materia, fechaInicio, streamer: this.auth.user.id}).map(res => res.json());
+  }
+
+  deleteClaseOnline(id: string) {
+    return this.http.delete(this.api + 'claseOnline/' + id).map(res => res.json());
+  }
+
   // alumno -> tareas
   getAllTareasAlumno() {
     return this.http.get(this.api + 'tarea/getAllTareasAlumno/' + this.auth.user.id).map(res => res.json());

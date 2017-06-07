@@ -1,0 +1,34 @@
+<h1 md-dialog-title>Agregar materia</h1>
+
+<md-dialog-content style="overflow-y: visible">
+  <md-progress-bar mode="indeterminate" *ngIf="loader"></md-progress-bar>
+  <div class="row">
+    <div class="col-md-6">
+      <md-radio-group class="example-radio-group" [(ngModel)]="addClaseData.materia">
+        <md-radio-button class="example-radio-button" *ngFor="let materia of allMaterias" [value]="materia">
+          {{materia.name}}
+        </md-radio-button>
+      </md-radio-group>
+    </div>
+    <div class="col-md-6">
+      <h4 id="color-display">Fecha de transmisión:</h4>
+      <ng2-datepicker [options]="options" [(ngModel)]="inicioModel" [disabled]="!addClaseData.fechaInicio"></ng2-datepicker>
+    </div>
+    <div fxFlex="100" fxLayout="column" class="w100" style="margin-top: 4rem; margin-bottom: 4rem;">
+      <md-input-container fxFlex="100" class="w100">
+        <input type="text" mdInput [(ngModel)]="addClaseData.title" placeholder="Titulo" [disabled]="!addClaseData.materia">
+      </md-input-container>
+      <div fxFlex="100" class="w100">
+        <md-input-container floatPlaceholder="auto" class="w100">
+            <textarea mdInput mdTextareaAutosize name="addClaseData.desc" [(ngModel)]="addClaseData.desc"
+                      placeholder="Descripción" [disabled]="!addClaseData.materia"></textarea>
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+</md-dialog-content>
+
+<md-dialog-actions [attr.align]="end">
+    <button md-button md-dialog-close color="danger">Cerrar</button>
+    <button md-button [disabled]="loader" color="accent" (click)="addClaseOnline(addClaseData.title, addClaseData.desc, addClaseData.materia, inicioModel.formatted)">Agregar</button>
+</md-dialog-actions>
