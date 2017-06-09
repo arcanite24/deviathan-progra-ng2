@@ -340,6 +340,10 @@ export class BackServiceService {
     return this.http.delete(this.api + 'claseOnline/' + id).map(res => res.json());
   }
 
+  getClaseOnlineDetail(id: string) {
+    return this.http.get(this.api + 'claseOnline/' + id).map(res => res.json());
+  }
+
   // alumno -> tareas
   getAllTareasAlumno() {
     return this.http.get(this.api + 'tarea/getAllTareasAlumno/' + this.auth.user.id).map(res => res.json());

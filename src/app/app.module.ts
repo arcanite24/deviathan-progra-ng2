@@ -54,6 +54,7 @@ import { AlumnoAnunciosComponent } from './pages/alumno/alumno-anuncios/alumno-a
 import { ProfesorOnlineClassComponent } from './pages/profesor/profesor-online-class/profesor-online-class.component';
 import { ProfesorOnlineClassAddComponent } from './pages/profesor/profesor-online-class-add/profesor-online-class-add.component';
 import { ProfesorOnlineClassDeleteComponent } from './pages/profesor/profesor-online-class-delete/profesor-online-class-delete.component';
+import { ProfesorOnlineClassDetailComponent } from './pages/profesor/profesor-online-class-detail/profesor-online-class-detail.component';
 
 const appRoutes: Routes = [
   // Admin
@@ -88,6 +89,7 @@ const appRoutes: Routes = [
   //Profesor
   {path: 'profesor/tareas', component: ProfesorTareasComponent},
   {path: 'profesor/clases-online', component: ProfesorOnlineClassComponent},
+  {path: 'profesor/transmitir/:id', component: ProfesorOnlineClassDetailComponent},
 
   //System
   {path: 'perfil', component: ProfilePageComponent},
@@ -165,7 +167,8 @@ const DROP_CONFIG: DropzoneConfigInterface = {
     AlumnoAnunciosComponent,
     ProfesorOnlineClassComponent,
     ProfesorOnlineClassAddComponent,
-    ProfesorOnlineClassDeleteComponent
+    ProfesorOnlineClassDeleteComponent,
+    ProfesorOnlineClassDetailComponent
   ],
   imports: [
     BrowserModule,
