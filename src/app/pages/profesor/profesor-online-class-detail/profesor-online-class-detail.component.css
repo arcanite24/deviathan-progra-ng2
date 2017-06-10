@@ -1,0 +1,31 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* Main Frame */
+.online-main-container {
+  padding-top: 1rem;
+}
+
+.online-header-controls {
+  margin-bottom: 1rem;
+}
+
+/* Online Guest Cameras */
+.online-guest-cameras {
+  margin-top: 1rem;
+}
+
+.online-guest-camera {
+  margin-bottom: 1rem;
+}
+
+/* Main video */
+video#main-video {
+  width: 100%;
+}
+
+/* Chat */
+.online-chat-container {
+  padding-left: 1rem;
+}

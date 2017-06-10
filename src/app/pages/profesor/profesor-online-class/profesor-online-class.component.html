@@ -29,7 +29,11 @@
           <td>{{clase.createdAt | date:'medium'}}</td>
           <td>
             <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Borrar Clase" md-button (click)="openDeleteClaseOnline(clase.id, i)"><md-icon>delete</md-icon></button>
+<<<<<<< HEAD
             <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Entrar a Clase" md-button [routerLink]="['/profesor/clase-online', clase.id]"><md-icon>delete</md-icon></button>
+=======
+            <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Detalles de la clase" md-button [routerLink]="['/profesor/transmitir', clase.id]"><md-icon>details</md-icon></button>
+>>>>>>> e0b81570eaffc4d4f910f6008e6ff4848f0f6246
           </td>
         </tr>
       </tbody>

@@ -340,8 +340,8 @@ export class BackServiceService {
   deleteClaseOnline(id: string) {
     return this.http.delete(this.api + 'claseOnline/' + id).map(res => res.json());
   }
-
-  getDetailClaseOnline(id: string) : Observable<any> {
+  
+  getClaseOnlineDetail(id: string) {
     return this.http.get(this.api + 'claseOnline/' + id).map(res => res.json());
   }
 

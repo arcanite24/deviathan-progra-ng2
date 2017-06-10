@@ -89,7 +89,11 @@ const appRoutes: Routes = [
   //Profesor
   {path: 'profesor/tareas', component: ProfesorTareasComponent},
   {path: 'profesor/clases-online', component: ProfesorOnlineClassComponent},
+<<<<<<< HEAD
   {path: 'profesor/clases-online/:id', component: ProfesorOnlineClassDetailComponent},
+=======
+  {path: 'profesor/transmitir/:id', component: ProfesorOnlineClassDetailComponent},
+>>>>>>> e0b81570eaffc4d4f910f6008e6ff4848f0f6246
 
   //System
   {path: 'perfil', component: ProfilePageComponent},

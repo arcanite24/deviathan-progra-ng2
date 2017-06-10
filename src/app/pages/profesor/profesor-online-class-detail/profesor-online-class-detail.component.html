@@ -1,0 +1,36 @@
+<div class="row online-main-container">
+  <div class="col-md-12 online-header-controls">
+    <button md-raised-button color="primary" routerLink="/profesor/clases-online"><md-icon>arrow_back</md-icon> Regresar</button>
+    <button md-raised-button (click)="hangupAll()" color="primary">Colgar a todos</button>
+  </div>
+  <div class="col-md-12 online-body">
+    <div class="row">
+      <md-card class="col-md-8 online-main-camera">
+        <video src="" id="main-video"></video>
+      </md-card>
+      <div class="col-md-4 online-chat-container">
+        <div class="row">
+          <md-card class="col-md-12 online-chat-body">
+            <md-card-title>Video List</md-card-title>
+            <div class="row">
+              <div class="col-md-12" id="remote-videos">
+                
+              </div>
+              <div class="col-md-12">
+                <ul>
+                  <li *ngFor="let client of allClients">{{client}}</li>
+                </ul>
+              </div>
+            </div>
+          </md-card>
+        </div>
+      </div>
+      <div class="col-md-12 online-guest-cameras">
+        <div class="row">
+          <md-card class="col-md-3 online-guest-camera"><video id="out-video-1"></video></md-card>
+          <md-card class="col-md-3 online-guest-camera" *ngFor="let client of allClients">ID: {{client.easyrtcid}}</md-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
