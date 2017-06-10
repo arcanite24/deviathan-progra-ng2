@@ -41,11 +41,20 @@ export class ProfesorOnlineClassDetailComponent implements OnInit, OnDestroy {
     this.webrtc = new SimpleWebRTC({
       localVideoEl: 'main-video',
       remoteVideosEl: 'remote-videos',
-      autoRequestMedia: true
+      autoRequestMedia: true,
+      nick: this.auth.user.firstName + ' ' + this.auth.user.lastName
     });
 
     this.webrtc.on('readyToCall', () => {
       this.webrtc.joinRoom('59382ce038964576097981d1');
+    });
+
+    this.webrtc.on('videoAdded', (video, peer) => {
+      this.allClients.push(peer.nick);
+    });
+
+    this.webrtc.on('videoRemoved', (video, peer) => {
+      this.allClients.splice(this.allClients.indexOf(peer.nick), 1);
     });
 
     this.router.events.subscribe(
