@@ -29,6 +29,7 @@
           <td>{{clase.createdAt | date:'medium'}}</td>
           <td>
             <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Borrar Clase" md-button (click)="openDeleteClaseOnline(clase.id, i)"><md-icon>delete</md-icon></button>
+            <button [disabled]="loader" style="color: rgba(0, 0, 0, 0.54)" mdTooltip="Entrar a Clase" md-button [routerLink]="['/profesor/clase-online', clase.id]"><md-icon>delete</md-icon></button>
           </td>
         </tr>
       </tbody>

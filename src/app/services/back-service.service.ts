@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { AuthService } from './auth.service';
+import { Observable } from "rxjs/Rx";
 
 @Injectable()
 export class BackServiceService {
@@ -338,6 +339,10 @@ export class BackServiceService {
 
   deleteClaseOnline(id: string) {
     return this.http.delete(this.api + 'claseOnline/' + id).map(res => res.json());
+  }
+
+  getDetailClaseOnline(id: string) : Observable<any> {
+    return this.http.get(this.api + 'claseOnline/' + id).map(res => res.json());
   }
 
   // alumno -> tareas

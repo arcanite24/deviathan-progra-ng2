@@ -45,7 +45,7 @@ export class ProfesorOnlineClassComponent implements OnInit {
 
   openAddClase() {
     let modal = this.dialog.open(ProfesorOnlineClassAddComponent, {
-      width: '30%'
+      width: '60%'
     });
     modal.afterClosed().subscribe(
       data => {
