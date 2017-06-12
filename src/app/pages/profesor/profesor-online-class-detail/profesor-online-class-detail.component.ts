@@ -70,8 +70,11 @@ export class ProfesorOnlineClassDetailComponent implements OnInit, OnDestroy {
     });
 
     this.webrtc.on('readyToCall', () => {
-      this.webrtc.joinRoom(this.id, (err, desc) => {
-        this.snack.open('Unido correctamente a la sala: ' + this.id, '', {duration: 4000});
+      this.route.params.subscribe((params) => {
+        this.id = params['id'];
+        this.webrtc.joinRoom(this.id, (err, desc) => {
+          this.snack.open('Unido correctamente a la sala: ' + this.id, '', {duration: 4000});
+        });
       });
     });
 

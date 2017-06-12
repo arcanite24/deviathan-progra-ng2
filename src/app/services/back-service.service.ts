@@ -334,6 +334,10 @@ export class BackServiceService {
     return this.http.get(this.api + 'claseOnline/getAllClasesOnlineProfesor/' + this.auth.user.id).map(res => res.json());
   }
 
+  getAllClasesOnline() {
+    return this.http.get(this.api + 'claseOnline').map(res => res.json());
+  }
+
   addClaseOnline(title: string, desc: string, materia: string, fechaInicio: string) {
     return this.http.post(this.api + 'claseOnline', {title, desc, materia, fechaInicio, streamer: this.auth.user.id}).map(res => res.json());
   }
