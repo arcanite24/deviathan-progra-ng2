@@ -30,7 +30,7 @@ export class ProfesorOnlineClassComponent implements OnInit {
 
   ngOnInit() {
     this.loader = true;
-    this.back.getAllClasesOnlineProfesor().subscribe(
+    this.back.getAllClasesOnline().subscribe(
       data => {
         this.loader = false;
         this.allClases = data;
