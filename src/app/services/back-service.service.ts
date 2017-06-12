@@ -248,7 +248,8 @@ export class BackServiceService {
       salon: salon,
       item: item,
       horaIn: horaIn,
-      horaOut: horaOut
+      horaOut: horaOut,
+      code: Math.random().toString(36).substring(7)
     }).map(res => res.json());
   }
 
