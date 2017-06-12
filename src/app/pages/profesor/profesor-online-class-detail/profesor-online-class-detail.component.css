@@ -25,7 +25,73 @@ video#main-video {
   width: 100%;
 }
 
+.online-main-camera {
+  padding: 0;
+}
+
 /* Chat */
 .online-chat-container {
-  padding-left: 1rem;
+  padding: 0;
+}
+
+.chat-header {
+  background-color: #F44336;
+  padding: 1rem;
+}
+
+.chat-header md-card-title {
+  color: white;
+  margin: 1rem;
+  font-size: 1.3rem;
+}
+
+.chat-body {
+  background: url('/assets/images/chat-bg.png');
+  padding: 1rem;
+  height: 250px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.card-body {
+  background: url('/assets/images/chat-bg.png');
+  padding: 1rem;
+  height: 300px;
+}
+
+.chat-input {
+  height: 50px;
+}
+
+.chat-model {
+  width: 100%;
+  margin: 0;
+}
+
+.msg {
+  margin-bottom: 1rem;
+  background-color: #d3d3d3;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.msg-username {
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.msg-local {
+  
+}
+
+.msg-remote {
+  
+}
+
+.client-item {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.54);
+  border-radius: 5px;
 }

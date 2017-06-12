@@ -1,35 +1,84 @@
 <div class="row online-main-container">
   <div class="col-md-12 online-header-controls">
     <button md-raised-button color="primary" routerLink="/profesor/clases-online"><md-icon>arrow_back</md-icon> Regresar</button>
-    <button md-raised-button (click)="hangupAll()" color="primary">Colgar a todos</button>
+    <span class="color-display">Recuerda que puedes maximizar un video dándo click sobre él.</span>
   </div>
   <div class="col-md-12 online-body">
     <div class="row">
-      <md-card class="col-md-8 online-main-camera">
-        <video src="" id="main-video"></video>
-      </md-card>
-      <div class="col-md-4 online-chat-container">
+      <div class="col-md-4">
         <div class="row">
-          <md-card class="col-md-12 online-chat-body">
-            <md-card-title>Video List</md-card-title>
-            <div class="row">
-              <div class="col-md-12" id="remote-videos">
-                
-              </div>
-              <div class="col-md-12">
-                <ul>
-                  <li *ngFor="let client of allClients">{{client}}</li>
-                </ul>
+          <md-card class="col-md-12 online-chat-container">
+            <div class="chat-header">
+              <md-card-title>Mi cámara</md-card-title>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <video src="" id="main-video" muted></video>
+                </div>
               </div>
             </div>
           </md-card>
         </div>
       </div>
-      <div class="col-md-12 online-guest-cameras">
+      <div class="col-md-4">
         <div class="row">
-          <md-card class="col-md-3 online-guest-camera"><video id="out-video-1"></video></md-card>
-          <md-card class="col-md-3 online-guest-camera" *ngFor="let client of allClients">ID: {{client.easyrtcid}}</md-card>
+          <md-card class="col-md-12 online-chat-container">
+            <div class="chat-header">
+              <md-card-title>Chat</md-card-title>
+            </div>
+            <div class="chat-body" #list [scrollTop]="list.scrollHeight">
+              <div class="row">
+                <div class="col-md-12" *ngFor="let msg of msgList">
+                  <div class="row" *ngIf="msg.isLocal">
+                    <div class="col-md-10 msg msg-local">
+                      {{msg.text}}
+                      <p class="msg-username">{{msg.user}}</p>
+                    </div>
+                  </div>
+                  <div class="row end-xs" *ngIf="!msg.isLocal">
+                    <div class="col-md-10 msg msg-remote">
+                      {{msg.text}}
+                      <p class="msg-username">{{msg.user}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-input">
+              <form (ngSubmit)="sendMessage(chatInput, $event);">
+                <md-input-container floatPlaceholder="auto" dividerColor="primary" class="chat-model">
+                    <input mdInput name="chatInput" [(ngModel)]="chatInput" type="text" required
+                          placeholder="Mensaje">
+                </md-input-container>
+              </form>
+            </div>
+          </md-card>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <md-card class="col-md-12 online-chat-container">
+            <div class="chat-header">
+              <md-card-title>Participantes</md-card-title>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <md-list>
+                      <md-list-item *ngFor="let c of allClients" class="client-item">
+                        <md-icon md-list-icon>person</md-icon>
+                        <p md-line>{{c}}</p>
+                      </md-list-item>
+                  </md-list>
+                </div>
+              </div>
+            </div>
+          </md-card>
+        </div>
+      </div>
+      <div class="col-md-12 online-guest-cameras" id="remote-videos">
+        
       </div>
     </div>
   </div>
